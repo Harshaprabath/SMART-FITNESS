@@ -18,33 +18,85 @@
                   <div class="form-group position-relative">
                     <label>First name <span class="text-danger">*</span></label>
                     <i-feather name="user" class="login-icons"></i-feather>
-                    <input type="text" class="form-control psl-5" formControlName="fname" placeholder="First Name"
+                    <input type="text" class="form-control psl-5" formControlName="firstName" placeholder="First Name"
                       required>
+                      <small class="form-text text-danger" *ngIf="!registerForm.get('firstName').valid && registerForm.get('firstName').touched "> 
+                        Fast Name Types is required
+                      </small>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group position-relative">
                     <label>Last name <span class="text-danger">*</span></label>
                     <i-feather name="user-check" class="login-icons"></i-feather>
-                    <input type="text" class="form-control psl-5" formControlName="lname" placeholder="Last Name"
+                    <input type="text" class="form-control psl-5" formControlName="lastName" placeholder="Last Name"
                       required>
+                      <small class="form-text text-danger" *ngIf="!registerForm.get('lastName').valid && registerForm.get('lastName').touched "> 
+                        Last Name is required
+                      </small>
+                      
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="form-group position-relative">
+                    <label>Birth Day <span class="text-danger">*</span></label>
+                    <input type="date" class="form-control" formControlName="birthday"
+                      required>
+                      <small class="form-text text-danger" *ngIf="!registerForm.get('birthday').valid && registerForm.get('birthday').touched "> 
+                        Birthday is required
+                      </small>
+                  </div>
+                </div>
+
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>User Type<span class="text-danger">*</span></label>
+                    <select class="form-select form-control" formControlName="userType" placeholder="Select">
+                      <option  [ngValue]="2">Custemer</option>
+                      <option  [ngValue]="3">Weight Trainer</option>
+                      <option  [ngValue]="4">Cardio Trainer</option>
+                      <option  [ngValue]="4">Nutritionist</option>
+                    </select>
+                    <small class="form-text text-danger" *ngIf="!registerForm.get('userType').valid && registerForm.get('userType').touched "> 
+                     User Types is required
+                   </small>
+                  </div>
+                </div> 
+
+                <div class="col-md-12">
+                  <div class="form-group position-relative">
+                    <label>Phone<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control " formControlName="mobil" placeholder="Phone" required>
+                    <small class="form-text text-danger" *ngIf="!registerForm.get('mobil').valid && registerForm.get('mobil').touched "> 
+                      Mobile is required
+                    </small>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="form-group position-relative">
                     <label>Your Email <span class="text-danger">*</span></label>
                     <i-feather name="mail" class="login-icons"></i-feather>
-                    <input type="email" class="form-control psl-5" formControlName="email" placeholder="Email" required>
+                    <input type="email" class="form-control" formControlName="email" placeholder="Email" required>
+                    <small class="form-text text-danger" *ngIf="!registerForm.get('email').valid && registerForm.get('email').touched "> 
+                      Email is required
+                    </small>
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="form-group position-relative">
                     <label>Password <span class="text-danger">*</span></label>
                     <i-feather name="key" class="login-icons"></i-feather>
-                    <input type="password" class="form-control psl-5" formControlName="password" placeholder="Password"
+                    <input type="password" class="form-control" formControlName="password" placeholder="Password"
                       required>
+                      <small class="form-text text-danger" *ngIf="!registerForm.get('password').valid && registerForm.get('password').touched "> 
+                        Password is required
+                      </small>
                   </div>
                 </div>
+                <input type="hidden" class="form-control" formControlName="isActive" value="true">
+
                 <div class="col-md-12">
                   <div class="form-group">
                     <div class="form-check">
@@ -60,21 +112,7 @@
                   <button class="btn btn-primary auth-form-btn" [disabled]="registerForm.invalid">Register</button>
                 </div>
                 <div class="col-lg-12 mt-4 text-center">
-                  <h6>Or Signup With</h6>
-                  <ul class="list-unstyled social-icon mb-0 mt-3">
-                    <li class="list-inline-item"><a href="javascript:void(0)" class="rounded">
-                        <i-feather name="facebook" class="fea-social sm-icon"></i-feather>
-                      </a></li>
-                    <li class="list-inline-item"><a href="javascript:void(0)" class="rounded">
-                        <i-feather name="github" class="fea-social sm-icon"></i-feather>
-                      </a></li>
-                    <li class="list-inline-item"><a href="javascript:void(0)" class="rounded">
-                        <i-feather name="twitter" class="fea-social sm-icon"></i-feather>
-                      </a></li>
-                    <li class="list-inline-item"><a href="javascript:void(0)" class="rounded">
-                        <i-feather name="gitlab" class="fea-social sm-icon"></i-feather>
-                      </a></li>
-                  </ul>
+                 
                 </div>
                 <div class="mx-auto">
                   <p class="mb-0 mt-3"><small class="text-dark msr-2">Already have an account ?</small> <a

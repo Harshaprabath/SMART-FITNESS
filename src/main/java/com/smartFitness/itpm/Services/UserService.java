@@ -2,6 +2,7 @@ package com.smartFitness.itpm.Services;
 
 import com.smartFitness.itpm.Exceptions.ResourceNotFoundException;
 import com.smartFitness.itpm.IServices.IUserService;
+import com.smartFitness.itpm.Models.Common.Response;
 import com.smartFitness.itpm.Models.User;
 import com.smartFitness.itpm.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,24 +36,27 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public String saveUser(User NewUser) {
+    public Response saveUser(User NewUser) {
 
-        String messege =null;
+            Response response = new Response();
 
         if(NewUser.getId() == null) {
             userRepository.save(NewUser);
-            messege = "Successfully Saved";
+            response.isSuccess = true;
+            response.message = "Successfully Saved";
         }
         else if(NewUser.getId() != null){
 
             userRepository.save(NewUser);
-            messege = "Successfully Updated";
+            response.isSuccess = true;
+            response.message = "Successfully Update";
         }
         else{
-            messege = "Unsuccessfully";
+            response.isSuccess = false;
+            response.message = "Unsuccessfully";
         }
 
-        return messege;
+        return response;
     }
 
     @Override

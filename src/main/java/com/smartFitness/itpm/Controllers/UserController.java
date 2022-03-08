@@ -1,5 +1,6 @@
 package com.smartFitness.itpm.Controllers;
 
+import com.smartFitness.itpm.Models.Common.Response;
 import com.smartFitness.itpm.Models.User;
 import com.smartFitness.itpm.Repositories.UserRepository;
 import com.smartFitness.itpm.Services.UserService;
@@ -36,7 +37,7 @@ public class UserController {
 
     // add and update a user
     @PostMapping("/save")
-    public String saveUser(@Valid @RequestBody User user) {
+    public Response saveUser(@Valid @RequestBody User user) {
 
         return userService.saveUser(user);
 
