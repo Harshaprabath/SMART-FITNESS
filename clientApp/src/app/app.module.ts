@@ -16,9 +16,9 @@ import { AuthLayoutComponent } from './layout/app-layout/auth-layout/auth-layout
 import { MainLayoutComponent } from './layout/app-layout/main-layout/main-layout.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { fakeBackendProvider } from './core/interceptor/fake-backend';
+//import { fakeBackendProvider } from './core/interceptor/fake-backend';
 import { ErrorInterceptor } from './core/interceptor/error.interceptor';
-import { JwtInterceptor } from './core/interceptor/jwt.interceptor';
+//import { JwtInterceptor } from './core/interceptor/jwt.interceptor';
 import {
   PerfectScrollbarModule,
   PERFECT_SCROLLBAR_CONFIG,
@@ -80,9 +80,9 @@ export function createTranslateLoader(http: HttpClient): any {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
     },
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  //  { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    fakeBackendProvider,
+   // fakeBackendProvider,
   ],
   entryComponents: [],
   bootstrap: [AppComponent],

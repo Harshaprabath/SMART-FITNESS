@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -50,7 +51,7 @@ public class UserController {
     }
 
     //Login
-    @PostMapping("/login/{email}/{password}")
+    @GetMapping("/login/{email}/{password}")
     public User login(@PathVariable(value = "email") String email,@PathVariable(value = "password") String password) {
 
         return userService.login(email,password);
