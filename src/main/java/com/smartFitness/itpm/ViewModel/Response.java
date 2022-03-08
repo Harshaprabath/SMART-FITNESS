@@ -1,4 +1,4 @@
-package com.smartFitness.itpm.Models.Common;
+package com.smartFitness.itpm.ViewModel;
 
 public class Response {
     public boolean isSuccess;

@@ -1,10 +1,9 @@
 package com.smartFitness.itpm.IServices;
 
-import com.smartFitness.itpm.Models.Common.Response;
+import com.smartFitness.itpm.ViewModel.Response;
 import com.smartFitness.itpm.Models.User;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface IUserService {
 

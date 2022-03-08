@@ -2,7 +2,7 @@ package com.smartFitness.itpm.Services;
 
 import com.smartFitness.itpm.Exceptions.ResourceNotFoundException;
 import com.smartFitness.itpm.IServices.IUserService;
-import com.smartFitness.itpm.Models.Common.Response;
+import com.smartFitness.itpm.ViewModel.Response;
 import com.smartFitness.itpm.Models.User;
 import com.smartFitness.itpm.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

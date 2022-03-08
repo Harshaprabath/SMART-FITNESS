@@ -1,16 +1,13 @@
 package com.smartFitness.itpm.Controllers;
 
-import com.smartFitness.itpm.Models.Common.Response;
+import com.smartFitness.itpm.ViewModel.Response;
 import com.smartFitness.itpm.Models.User;
-import com.smartFitness.itpm.Repositories.UserRepository;
 import com.smartFitness.itpm.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin
 @RestController

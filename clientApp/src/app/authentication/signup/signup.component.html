@@ -78,7 +78,7 @@
                   <div class="form-group position-relative">
                     <label>Your Email <span class="text-danger">*</span></label>
                     <i-feather name="mail" class="login-icons"></i-feather>
-                    <input type="email" class="form-control" formControlName="email" placeholder="Email" required>
+                    <input type="email" class="form-control  psl-5" formControlName="email" placeholder="Email" required>
                     <small class="form-text text-danger" *ngIf="!registerForm.get('email').valid && registerForm.get('email').touched "> 
                       Email is required
                     </small>
@@ -88,7 +88,7 @@
                   <div class="form-group position-relative">
                     <label>Password <span class="text-danger">*</span></label>
                     <i-feather name="key" class="login-icons"></i-feather>
-                    <input type="password" class="form-control" formControlName="password" placeholder="Password"
+                    <input type="password" class="form-control  psl-5" formControlName="password" placeholder="Password"
                       required>
                       <small class="form-text text-danger" *ngIf="!registerForm.get('password').valid && registerForm.get('password').touched "> 
                         Password is required
