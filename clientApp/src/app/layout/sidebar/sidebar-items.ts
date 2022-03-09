@@ -12,7 +12,48 @@ export const ROUTES: RouteInfo[] = [
     badgeClass: '',
     submenu: [],
   },
+
+ 
   {
+    path: '',
+    title: 'MENUITEMS.HOME.TEXT',
+    moduleName: 'user',
+    iconType: 'feather',
+    icon: 'monitor',
+    class: 'menu-toggle',
+    groupTitle: false,
+    badge: '',
+    badgeClass: '',
+    submenu: [
+
+      {
+        path: '/user/users-list',
+        title: 'User-List',
+        moduleName: 'user',
+        iconType: '',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        badge: '',
+        badgeClass: '',
+        submenu: [],
+      },
+     
+      {
+        path: '/user/user-feedback',
+        title: 'Feedback',
+        moduleName: 'user',
+        iconType: '',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        badge: '',
+        badgeClass: '',
+        submenu: [],
+      },
+    ],
+  },
+ /* {
     path: '',
     title: 'MENUITEMS.HOME.TEXT',
     moduleName: 'dashboard',
@@ -23,6 +64,8 @@ export const ROUTES: RouteInfo[] = [
     badge: '',
     badgeClass: '',
     submenu: [
+
+     
       {
         path: '/dashboard/main',
         title: 'MENUITEMS.HOME.LIST.DASHBOARD1',
@@ -49,7 +92,7 @@ export const ROUTES: RouteInfo[] = [
       },
     ],
   },
-  {
+/*  {
     path: 'advance-table',
     title: 'MENUITEMS.ADVANCE-TABLE.TEXT',
     moduleName: 'advance-table',
@@ -60,8 +103,8 @@ export const ROUTES: RouteInfo[] = [
     badge: '',
     badgeClass: '',
     submenu: [],
-  },
-  {
+  },  */
+  /**{
     path: '',
     title: '-- Pages',
     moduleName: '',
@@ -256,5 +299,5 @@ export const ROUTES: RouteInfo[] = [
         submenu: [],
       },
     ],
-  },
+  },*/
 ];

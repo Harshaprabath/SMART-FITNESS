@@ -9,7 +9,7 @@ import {
 } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
-import { User } from '../models/user';
+/*import { User } from '../models/user';
 
 const users: User[] = [
   {
@@ -20,8 +20,8 @@ const users: User[] = [
     lastName: 'Smith',
     token: 'admin-token',
   },
-];
-
+];*/
+/*
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
   intercept(
@@ -86,4 +86,4 @@ export let fakeBackendProvider = {
   provide: HTTP_INTERCEPTORS,
   useClass: FakeBackendInterceptor,
   multi: true,
-};
+};*/
