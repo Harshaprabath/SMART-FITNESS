@@ -42,8 +42,8 @@
               <a [routerLink]="sidebarSubItem.submenu.length > 0 ? null : [sidebarSubItem.path]"
                 (click)="callLevel2Toggle($event,sidebarSubItem.moduleName)" [ngClass]="[sidebarSubItem.class]">
                 {{sidebarSubItem.title | translate}}
-              </a>
-              <!-- Second level menu -->
+              </a>                                          
+              <!-- Second level menu --> 
               <ul class="ml-menu-2" *ngIf="sidebarSubItem.submenu.length > 0">
                 <li *ngFor="let sidebarSubsubItem of sidebarSubItem.submenu"
                   [ngClass]="level3Menu === sidebarSubsubItem.moduleName? 'activeSubSub':''"
@@ -53,7 +53,7 @@
                     [ngClass]="[sidebarSubsubItem.class]">
                     {{sidebarSubsubItem.title | translate}}
                   </a>
-                </li>
+                </li> 
               </ul>
             </li>
           </ul>

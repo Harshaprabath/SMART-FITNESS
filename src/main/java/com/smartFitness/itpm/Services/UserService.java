@@ -38,7 +38,7 @@ public class UserService implements IUserService {
     @Override
     public Response saveUser(User NewUser) {
 
-            Response response = new Response();
+        Response response = new Response();
 
         if(NewUser.getId() == null) {
             userRepository.save(NewUser);
