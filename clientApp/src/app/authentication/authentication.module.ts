@@ -20,6 +20,7 @@ import { ForgotComponent } from './forgot/forgot.component';
 import { Page500Component } from './page500/page500.component';
 import { Page404Component } from './page404/page404.component';
 import { ResetComponent } from './reset/reset.component';
+import { ToastrModule } from 'ngx-toastr';
 
 const icons = {
   Facebook,
@@ -40,6 +41,8 @@ const icons = {
     ReactiveFormsModule,
     AuthenticationRoutingModule,
     FeatherModule.pick(icons),
+    ToastrModule.forRoot(),
+    
   ],
 })
 export class AuthenticationModule {}
