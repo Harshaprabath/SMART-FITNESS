@@ -88,10 +88,21 @@
                   <div class="form-group position-relative">
                     <label>Password <span class="text-danger">*</span></label>
                     <i-feather name="key" class="login-icons"></i-feather>
+                    <input type="password" class="form-control  psl-5" formControlName="password_1" placeholder="Password"
+                      required>
+                      <small class="form-text text-danger" *ngIf="!registerForm.get('password_1').valid && registerForm.get('password_1').touched "> 
+                        Password is required
+                      </small>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group position-relative">
+                    <label>Confirm Password <span class="text-danger">*</span></label>
+                    <i-feather name="key" class="login-icons"></i-feather>
                     <input type="password" class="form-control  psl-5" formControlName="password" placeholder="Password"
                       required>
                       <small class="form-text text-danger" *ngIf="!registerForm.get('password').valid && registerForm.get('password').touched "> 
-                        Password is required
+                        Password is required 
                       </small>
                   </div>
                 </div>

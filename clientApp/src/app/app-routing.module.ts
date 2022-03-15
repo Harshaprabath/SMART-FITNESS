@@ -20,8 +20,7 @@ const routes: Routes = [
         path: 'nutrition',
         loadChildren: () =>
           import('./nutrition/nutrition.module').then((m) => m.NutritionModule),
-      },
-        
+      },       
     ],
   },
 
