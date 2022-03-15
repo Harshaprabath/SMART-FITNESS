@@ -34,7 +34,7 @@ public class UserService implements IUserService {
         }
         return ActiveUsers;
     }
-//test
+
     @Override
     public Response saveUser(User NewUser) {
 
@@ -69,20 +69,29 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public String deleteUser(Integer userId) {
+    public Response deleteUser(Integer userId) {
 
-       User user = userRepository.findById(userId)
+        Response response = new Response();
+        User user = userRepository.findById(userId)
                .orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
 
-       user.setIsActive(false);
+        if(user != null) {
+            user.setIsActive(false);
+            userRepository.save(user);
 
-       userRepository.save(user);
-
-       return "Successfully deleted";
+            response.isSuccess = true;
+            response.message = "Successfully deleted";
+        }
+        else{
+            response.isSuccess = false;
+            response.message = "Unsuccessfully";
+        }
+         return response;
     }
 
     @Override
     public User login(String email, String password) {
+
         int userCount = (int) userRepository.count();
         List<User> users = findAllUsers();
 

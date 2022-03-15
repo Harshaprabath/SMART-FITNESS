@@ -20,6 +20,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./user/user.module').then((m) => m.UserModule),
       },
+      {
+        path: 'nutrition',
+        loadChildren: () =>
+          import('./nutrition/nutrition.module').then((m) => m.NutritionModule),
+      },
     
       {
         path: 'advance-table',

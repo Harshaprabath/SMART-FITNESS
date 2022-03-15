@@ -34,6 +34,7 @@
             </span>
             <span *ngIf="sidebarItem.badge != '' " [ngClass]="[sidebarItem.badgeClass]">{{sidebarItem.badge}}</span>
           </a>
+          
           <!-- First level menu -->
           <ul class="ml-menu" *ngIf="sidebarItem.submenu.length > 0">
             <li [ngClass]="level2Menu === sidebarSubItem.moduleName? 'activeSub':''"
