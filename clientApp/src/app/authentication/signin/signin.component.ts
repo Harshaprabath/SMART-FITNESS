@@ -23,8 +23,8 @@ export class SigninComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      username: ['admin@email.com', Validators.required],
-      password: ['admin@123', Validators.required],
+      username: ['harsha@gmail.com', Validators.required],
+      password: ['harsha', Validators.required],
     });
   }
   get f() {
@@ -45,7 +45,7 @@ export class SigninComponent implements OnInit {
             console.log(res);
             if (res != null) {
                
-                this.router.navigate(['/dashboard/main']);
+                this.router.navigate(['/user/user-feedback']);
               
             } else {
               this.error = 'Invalid Login';
