@@ -42,7 +42,7 @@ public class UserController {
 
     // Delete a user
     @DeleteMapping("/delete/{id}")
-    public String deleteUser(@PathVariable(value = "id") Integer userId) {
+    public Response deleteUser(@PathVariable(value = "id") Integer userId) {
 
         return userService.deleteUser(userId);
 
