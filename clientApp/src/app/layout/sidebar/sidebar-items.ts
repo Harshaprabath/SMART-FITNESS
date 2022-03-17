@@ -53,6 +53,58 @@ export const ROUTES: RouteInfo[] = [
       },
     ],
   },
+
+  {
+    path: '',
+    title: 'MENUITEMS.HOME.TEXT',
+    moduleName: 'user-service',
+    iconType: 'feather',
+    icon: 'monitor',
+    class: 'menu-toggle',
+    groupTitle: false,
+    badge: '',
+    badgeClass: '',
+    submenu: [
+
+      {
+        path: '/user-service/our-services',
+        title: 'Our-Services',
+        moduleName: 'user-service',
+        iconType: '',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        badge: '',
+        badgeClass: '',
+        submenu: [],
+      },
+     
+      {
+        path: '/user-service/bmi-calculator',
+        title: 'BMI-Calculator',
+        moduleName: 'user-service',
+        iconType: '',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        badge: '',
+        badgeClass: '',
+        submenu: [],
+      },
+      {
+        path: '/user-service/our-schedules',
+        title: 'Our-schedules',
+        moduleName: 'user-service',
+        iconType: '',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        badge: '',
+        badgeClass: '',
+        submenu: [],
+      },
+    ],
+  },
   {
     path: '',
     title: 'MENUITEMS.HOME.TEXT',
@@ -156,6 +208,8 @@ export const ROUTES: RouteInfo[] = [
       },
     ],
   },
+
+  
  /* {
     path: '',
     title: 'MENUITEMS.HOME.TEXT',

@@ -17,6 +17,11 @@ const routes: Routes = [
           import('./user/user.module').then((m) => m.UserModule),
       },
       {
+        path: 'user-service',
+        loadChildren: () =>
+          import('./user-service/user-service.module').then((m) => m.UserServiceModule),
+      },  
+      {
         path: 'nutrition',
         loadChildren: () =>
           import('./nutrition/nutrition.module').then((m) => m.NutritionModule),
@@ -25,7 +30,8 @@ const routes: Routes = [
         path: 'weight-gain',
         loadChildren: () =>
           import('./weight-gain/weight-gain.module').then((m) => m.WeightGainModule),
-      },       
+      }, 
+          
     ],
   },
 
