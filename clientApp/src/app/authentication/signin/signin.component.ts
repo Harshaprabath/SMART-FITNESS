@@ -45,7 +45,7 @@ export class SigninComponent implements OnInit {
             console.log(res);
             if (res != null) {
                
-                this.router.navigate(['/user/user-feedback']);
+                this.router.navigate(['/user/user-profile']);
               
             } else {
               this.error = 'Invalid Login';

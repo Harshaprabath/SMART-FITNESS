@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResolveStart, Router } from '@angular/router';
 import { UserService } from 'src/app/core/service/user/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.sass'],
+  providers: [ToastrService]
 })
 export class SignupComponent implements OnInit {
   registerForm: FormGroup;
@@ -16,6 +18,8 @@ export class SignupComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userService: UserService,
     private router: Router,
+    private toastr: ToastrService,
+    
     ) {}
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -27,6 +31,7 @@ export class SignupComponent implements OnInit {
       userType: ['', Validators.required],
       email: [ '', [Validators.required, Validators.email, Validators.minLength(5)],],
       mobil: ['', Validators.required],
+      password_1: ['', Validators.required],
       password: ['', Validators.required],
       isActive: [true, Validators.required],
       termcondition: [false, [Validators.requiredTrue]],
@@ -42,7 +47,11 @@ export class SignupComponent implements OnInit {
     if (this.registerForm.invalid) {
       this.error = 'Invalid data !';
       return;
-    } else {
+    }else if(this.registerForm.value.password != this.registerForm.value.password_1 ){
+      this.error = 'Password Mismatch';
+      return;
+      
+    }else {
       console.log(this.registerForm.value);
       this.userService
         .saveUser(this.registerForm.value)
@@ -51,7 +60,7 @@ export class SignupComponent implements OnInit {
             console.log(res);
             if(res.isSuccess) {
                
-                this.router.navigate(['/dashboard/main']);
+                this.router.navigate(['/user/user-profile']);
               
             } else {
               this.error = 'Invalid Login';

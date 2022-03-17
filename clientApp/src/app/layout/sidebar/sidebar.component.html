@@ -13,15 +13,17 @@
         [ngStyle]="{'position' : 'relative', 'max-height' : listMaxHeight+'px', 'max-width' : listMaxWidth+'px'}"
         [perfectScrollbar]>
         <li class="sidebar-user-panel">
-          <div class="user-panel">
+          <a routerLink="/user/user-profile">
+          <div class="user-panel">          
             <div class=" image">
               <img src="assets/images/user.png" class="img-circle user-img-circle" alt="User Image" />
-            </div>
+            </div>           
           </div>
-          <div class="profile-usertitle">
-            <div class="sidebar-userpic-name">Emily Smith </div>
+          <div class="profile-usertitle">           
+            <div class="sidebar-userpic-name">Emily Smith </div>            
             <div class="profile-usertitle-job ">{{'MENUITEMS.USER.POST' | translate}} </div>
           </div>
+        </a>
         </li>
         <!-- Top Most level menu -->
         <li [class.active]="level1Menu === sidebarItem.moduleName && sidebarItem.submenu.length != 0"
