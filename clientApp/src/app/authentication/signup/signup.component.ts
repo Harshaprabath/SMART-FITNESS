@@ -47,7 +47,7 @@ export class SignupComponent implements OnInit {
     if (this.registerForm.invalid) {
       this.error = 'Invalid data !';
       return;
-    }else if(this.registerForm.value.password_1 =this.registerForm.value.password ){
+    }else if(this.registerForm.value.password != this.registerForm.value.password_1 ){
       this.error = 'Password Mismatch';
       return;
       
