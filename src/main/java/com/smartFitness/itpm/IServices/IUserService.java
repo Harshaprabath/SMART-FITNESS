@@ -1,5 +1,6 @@
 package com.smartFitness.itpm.IServices;
 
+import com.smartFitness.itpm.Models.CurrentUser;
 import com.smartFitness.itpm.ViewModel.Response;
 import com.smartFitness.itpm.Models.User;
 
@@ -13,4 +14,5 @@ public interface IUserService {
     public Response deleteUser(Integer userId);
     public User login(String email, String password);
     public User ChangePassword(Integer Userid, String newPassword);
+    public User findCurrentUser();
 }
