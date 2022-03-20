@@ -30,9 +30,7 @@ public class UserController {
     @GetMapping("/currentUser")
     public User getCurrentUser() {
 
-
         return userService.findCurrentUser();
-
     }
 
     // Get a Single user

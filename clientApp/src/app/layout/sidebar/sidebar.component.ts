@@ -11,12 +11,20 @@ import {
 } from '@angular/core';
 import { ROUTES } from './sidebar-items';
 import { AuthService } from 'src/app/core/service/auth.service';
+import { User } from 'src/app/core/models/user/user.model';
+import { UserService } from 'src/app/core/service/user/user.service';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.sass'],
 })
 export class SidebarComponent implements OnInit, OnDestroy {
+  usertype = null;
+  data = new User();
+  user_t = String;
+  scrollBarHorizontal = window.innerWidth < 1200;
+  loadingIndicator = false;
+  reorderable = true;
   public sidebarItems: any[];
   level1Menu = '';
   level2Menu = '';
@@ -31,12 +39,15 @@ export class SidebarComponent implements OnInit, OnDestroy {
   headerHeight = 60;
   routerObj = null;
   currentRoute: string;
+
+ 
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private renderer: Renderer2,
     public elementRef: ElementRef,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private userService:UserService,
   ) {
     this.routerObj = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -51,6 +62,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
       }
     });
   }
+
+
   @HostListener('window:resize', ['$event'])
   windowResizecall(event) {
     this.setMenuHeight();
@@ -97,6 +110,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     }
     this.initLeftSidebar();
     this.bodyTag = this.document.body;
+    this.getCurrentuser();
   }
   ngOnDestroy() {
     this.routerObj.unsubscribe();
@@ -143,4 +157,35 @@ export class SidebarComponent implements OnInit, OnDestroy {
       this.renderer.addClass(this.document.body, 'sidebar-gone');
     }
   }
+
+  getCurrentuser()
+{
+  this.loadingIndicator=true;
+  this.userService.getCurrentUser()
+  .subscribe(response=>
+  {   
+      console.log(response);
+      this.data= response;
+
+      if (this.data.userType == 1){
+         this.usertype = "Admin";
+      }else if (this.data.userType == 2){
+        this.usertype ="Custemer";
+      }else if (this.data.userType == 3){
+        this.usertype ="Weight Trainer";
+      }else if (this.data.userType == 4){
+        this.userType ="Cardio Trainer";
+      }
+      else {
+        this.usertype ="Nutritionist";
+      }
+      this.loadingIndicator=false;
+  },error=>{
+      this.loadingIndicator=false;
+     
+  });
 }
+}
+
+
+  
