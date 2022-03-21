@@ -12,7 +12,205 @@ export const ROUTES: RouteInfo[] = [
     badgeClass: '',
     submenu: [],
   },
+
+ 
   {
+    path: '',
+    title: 'MENUITEMS.HOME.TEXT',
+    moduleName: 'user',
+    iconType: 'feather',
+    icon: 'monitor',
+    class: 'menu-toggle',
+    groupTitle: false,
+    badge: '',
+    badgeClass: '',
+    submenu: [
+
+      {
+        path: '/user/users-list',
+        title: 'User-List',
+        moduleName: 'user',
+        iconType: '',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        badge: '',
+        badgeClass: '',
+        submenu: [],
+      },
+     
+      {
+        path: '/user/user-feedback',
+        title: 'Feedback',
+        moduleName: 'user',
+        iconType: '',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        badge: '',
+        badgeClass: '',
+        submenu: [],
+      },
+    ],
+  },
+
+  {
+    path: '',
+    title: 'MENUITEMS.HOME.TEXT',
+    moduleName: 'user-service',
+    iconType: 'feather',
+    icon: 'monitor',
+    class: 'menu-toggle',
+    groupTitle: false,
+    badge: '',
+    badgeClass: '',
+    submenu: [
+
+      {
+        path: '/user-service/our-services',
+        title: 'Our-Services',
+        moduleName: 'user-service',
+        iconType: '',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        badge: '',
+        badgeClass: '',
+        submenu: [],
+      },
+     
+      {
+        path: '/user-service/bmi-calculator',
+        title: 'BMI-Calculator',
+        moduleName: 'user-service',
+        iconType: '',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        badge: '',
+        badgeClass: '',
+        submenu: [],
+      },
+      {
+        path: '/user-service/our-schedules',
+        title: 'Our-schedules',
+        moduleName: 'user-service',
+        iconType: '',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        badge: '',
+        badgeClass: '',
+        submenu: [],
+      },
+    ],
+  },
+  {
+    path: '',
+    title: 'MENUITEMS.HOME.TEXT',
+    moduleName: 'nutrition',
+    iconType: 'feather',
+    icon: 'monitor',
+    class: 'menu-toggle',
+    groupTitle: false,
+    badge: '',
+    badgeClass: '',
+    submenu: [
+
+      {
+        path: '/nutrition/diet-plan',
+        title: 'Diet-Plans',
+        moduleName: 'nutrition',
+        iconType: '',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        badge: '',
+        badgeClass: '',
+        submenu: [],
+      },
+     
+      {
+        path: '/nutrition/healthy-recipes',
+        title: 'Healthy-Resipes',
+        moduleName: 'nutrition',
+        iconType: '',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        badge: '',
+        badgeClass: '',
+        submenu: [],
+      },
+      {
+        path: '/nutrition/food-facts',
+        title: 'Food-Facts',
+        moduleName: 'nutrition',
+        iconType: '',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        badge: '',
+        badgeClass: '',
+        submenu: [],
+      },
+    ],
+  },
+
+  {
+    path: '',
+    title: 'MENUITEMS.HOME.TEXT',
+    moduleName: 'weight-gain',
+    iconType: 'feather',
+    icon: 'monitor',
+    class: 'menu-toggle',
+    groupTitle: false,
+    badge: '',
+    badgeClass: '',
+    submenu: [
+
+      {
+        path: '/weight-gain/exercise-plans',
+        title: 'Exercise-Plans',
+        moduleName: 'weight-gain',
+        iconType: '',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        badge: '',
+        badgeClass: '',
+        submenu: [],
+      },
+     
+      {
+        path: '/weight-gain/schedules',
+        title: 'schedules',
+        moduleName: 'weight-gain',
+        iconType: '',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        badge: '',
+        badgeClass: '',
+        submenu: [],
+      },
+      {
+        path: '/weight-gain/special-events',
+        title: 'Special-Events',
+        moduleName: 'weight-gain',
+        iconType: '',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        badge: '',
+        badgeClass: '',
+        submenu: [],
+      },
+    ],
+  },
+
+  
+ /* {
     path: '',
     title: 'MENUITEMS.HOME.TEXT',
     moduleName: 'dashboard',
@@ -23,6 +221,8 @@ export const ROUTES: RouteInfo[] = [
     badge: '',
     badgeClass: '',
     submenu: [
+
+     
       {
         path: '/dashboard/main',
         title: 'MENUITEMS.HOME.LIST.DASHBOARD1',
@@ -49,7 +249,7 @@ export const ROUTES: RouteInfo[] = [
       },
     ],
   },
-  {
+/*  {
     path: 'advance-table',
     title: 'MENUITEMS.ADVANCE-TABLE.TEXT',
     moduleName: 'advance-table',
@@ -60,8 +260,8 @@ export const ROUTES: RouteInfo[] = [
     badge: '',
     badgeClass: '',
     submenu: [],
-  },
-  {
+  },  */
+  /**{
     path: '',
     title: '-- Pages',
     moduleName: '',
@@ -256,5 +456,5 @@ export const ROUTES: RouteInfo[] = [
         submenu: [],
       },
     ],
-  },
+  },*/
 ];

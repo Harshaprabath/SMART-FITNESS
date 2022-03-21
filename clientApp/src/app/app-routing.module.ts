@@ -10,32 +10,28 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: '/authentication/signin', pathMatch: 'full' },
+     
       {
-        path: 'dashboard',
+        path: 'user',
         loadChildren: () =>
-          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+          import('./user/user.module').then((m) => m.UserModule),
       },
       {
-        path: 'advance-table',
+        path: 'user-service',
         loadChildren: () =>
-          import('./advance-table/advance-table.module').then(
-            (m) => m.AdvanceTableModule
-          ),
-      },
+          import('./user-service/user-service.module').then((m) => m.UserServiceModule),
+      },  
       {
-        path: 'extra-pages',
+        path: 'nutrition',
         loadChildren: () =>
-          import('./extra-pages/extra-pages.module').then(
-            (m) => m.ExtraPagesModule
-          ),
-      },
+          import('./nutrition/nutrition.module').then((m) => m.NutritionModule),
+      }, 
       {
-        path: 'multilevel',
+        path: 'weight-gain',
         loadChildren: () =>
-          import('./multilevel/multilevel.module').then(
-            (m) => m.MultilevelModule
-          ),
-      },
+          import('./weight-gain/weight-gain.module').then((m) => m.WeightGainModule),
+      }, 
+          
     ],
   },
 

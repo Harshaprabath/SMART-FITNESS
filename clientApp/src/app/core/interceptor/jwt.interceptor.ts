@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from '../service/auth.service';
-
+/*
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
   constructor(private authenticationService: AuthService) {}
@@ -28,4 +28,4 @@ export class JwtInterceptor implements HttpInterceptor {
 
     return next.handle(request);
   }
-}
+}*/
