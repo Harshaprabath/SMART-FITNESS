@@ -2,6 +2,8 @@ package com.smartFitness.itpm.Services;
 
 import com.smartFitness.itpm.Exceptions.ResourceNotFoundException;
 import com.smartFitness.itpm.IServices.IUserService;
+import com.smartFitness.itpm.Models.CurrentUser;
+import com.smartFitness.itpm.ViewModel.Response;
 import com.smartFitness.itpm.Models.User;
 import com.smartFitness.itpm.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ public class UserService implements IUserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    private CurrentUser currentUser;
 
     @Override
     public List<User> findAllUsers() {
@@ -35,24 +39,27 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public String saveUser(User NewUser) {
+    public Response saveUser(User NewUser) {
 
-        String messege =null;
+        Response response = new Response();
 
         if(NewUser.getId() == null) {
             userRepository.save(NewUser);
-            messege = "Successfully Saved";
+            response.isSuccess = true;
+            response.message = "Successfully Saved";
         }
         else if(NewUser.getId() != null){
 
             userRepository.save(NewUser);
-            messege = "Successfully Updated";
+            response.isSuccess = true;
+            response.message = "Successfully Update";
         }
         else{
-            messege = "Unsuccessfully";
+            response.isSuccess = false;
+            response.message = "Unsuccessfully";
         }
 
-        return messege;
+        return response;
     }
 
     @Override
@@ -65,20 +72,29 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public String deleteUser(Integer userId) {
+    public Response deleteUser(Integer userId) {
 
-       User user = userRepository.findById(userId)
+        Response response = new Response();
+        User user = userRepository.findById(userId)
                .orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
 
-       user.setIsActive(false);
+        if(user != null) {
+            user.setIsActive(false);
+            userRepository.save(user);
 
-       userRepository.save(user);
-
-       return "Successfully deleted";
+            response.isSuccess = true;
+            response.message = "Successfully deleted";
+        }
+        else{
+            response.isSuccess = false;
+            response.message = "Unsuccessfully";
+        }
+         return response;
     }
 
     @Override
     public User login(String email, String password) {
+
         int userCount = (int) userRepository.count();
         List<User> users = findAllUsers();
 
@@ -86,11 +102,11 @@ public class UserService implements IUserService {
             User user = users.get(i);
 
             if(Objects.equals(user.getEmail(), email) && Objects.equals(user.getPassword(), password) ){
+                currentUser= new CurrentUser();
+                currentUser.setCurrentUser(user);
                 return user;
             }
-            else {
-                return null;
-            }
+
         }
         return null;
     }
@@ -106,6 +122,11 @@ public class UserService implements IUserService {
         userRepository.save(user);
 
         return user;
+    }
+
+    @Override
+    public User findCurrentUser() {
+        return currentUser.getCurrentUser();
     }
 
 }
