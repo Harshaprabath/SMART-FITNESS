@@ -1,5 +1,6 @@
 package com.smartFitness.itpm.Controllers;
 
+import com.smartFitness.itpm.Models.CurrentUser;
 import com.smartFitness.itpm.ViewModel.Response;
 import com.smartFitness.itpm.Models.User;
 import com.smartFitness.itpm.Services.UserService;
@@ -23,6 +24,13 @@ public class UserController {
 
         return userService.findAllUsers();
 
+    }
+
+    // get current user
+    @GetMapping("/currentUser")
+    public User getCurrentUser() {
+
+        return userService.findCurrentUser();
     }
 
     // Get a Single user
@@ -60,7 +68,7 @@ public class UserController {
     @PostMapping("/password/{id}/{newPassword}")
     public User ChangePassword(@PathVariable(value = "id") Integer userId,@PathVariable(value = "newPassword") String newPassword) {
 
-        return userService.ChangePassword(userId,newPassword);
+        return userService.ChangePassword(userId,newPassword) ;
 
     }
 

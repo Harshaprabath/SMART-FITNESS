@@ -2,6 +2,7 @@ package com.smartFitness.itpm.Services;
 
 import com.smartFitness.itpm.Exceptions.ResourceNotFoundException;
 import com.smartFitness.itpm.IServices.IUserService;
+import com.smartFitness.itpm.Models.CurrentUser;
 import com.smartFitness.itpm.ViewModel.Response;
 import com.smartFitness.itpm.Models.User;
 import com.smartFitness.itpm.Repositories.UserRepository;
@@ -17,6 +18,8 @@ public class UserService implements IUserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    private CurrentUser currentUser;
 
     @Override
     public List<User> findAllUsers() {
@@ -99,11 +102,11 @@ public class UserService implements IUserService {
             User user = users.get(i);
 
             if(Objects.equals(user.getEmail(), email) && Objects.equals(user.getPassword(), password) ){
+                currentUser= new CurrentUser();
+                currentUser.setCurrentUser(user);
                 return user;
             }
-            else {
-                return null;
-            }
+
         }
         return null;
     }
@@ -119,6 +122,11 @@ public class UserService implements IUserService {
         userRepository.save(user);
 
         return user;
+    }
+
+    @Override
+    public User findCurrentUser() {
+        return currentUser.getCurrentUser();
     }
 
 }
