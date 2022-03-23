@@ -17,6 +17,7 @@ public class CurrentUser {
     public static  Blob proPic;
     public static  String email;
     public static  String mobil;
+    public static  String password;
     public static  boolean isActive;
 
     public void setCurrentUser(User user){
@@ -28,6 +29,7 @@ public class CurrentUser {
         this.proPic = user.getProPic();
         this.email = user.getEmail();
         this.mobil = user.getMobil();
+        this.password = user.getPassword();
         this.isActive = user.getIsActive();
     }
 
@@ -43,6 +45,7 @@ public class CurrentUser {
         currentUser.setProPic(this.proPic);
         currentUser.setEmail(this.email);
         currentUser.setMobil(this.mobil);
+        currentUser.setPassword(this.password);
         currentUser.setIsActive(this.isActive);
 
         return currentUser;
