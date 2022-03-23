@@ -68,7 +68,7 @@ public class UserController {
     @PostMapping("/password/{id}/{newPassword}")
     public User ChangePassword(@PathVariable(value = "id") Integer userId,@PathVariable(value = "newPassword") String newPassword) {
 
-        return userService.ChangePassword(userId,newPassword);
+        return userService.ChangePassword(userId,newPassword) ;
 
     }
 
