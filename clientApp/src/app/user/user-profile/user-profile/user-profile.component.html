@@ -1,0 +1,253 @@
+<section class="main-content">
+    <ul class="breadcrumb breadcrumb-style ">
+      <li class="breadcrumb-item">
+        <h5 class="page-title m-b-0">User-Profile</h5>
+      </li>
+      <li class="breadcrumb-item bcrumb-1">
+        <a routerLink="/dashboard/main">
+          <i class="fas fa-home font-17"></i></a>
+      </li>
+      <li class="breadcrumb-item">Profile</li>
+    </ul>
+    <div class="section-body">
+      <div class="row mt-sm-4">
+        <div class="col-12 col-md-12 col-lg-4">
+          <div class="card author-box">
+            <div class="card-body">
+              <div class="author-box-center">
+                <img alt="image" src="assets/images/users/user-1.png" class="rounded-circle author-box-picture">
+                <div class="clearfix"></div>
+                <div class="author-box-name">
+                  <a href="#" onClick="return false;"> {{data.firstName}} {{data.lastName}}</a>
+                </div>
+                <div class="author-box-job">{{userType}} </div>
+               
+              </div>
+              <div class="text-center">
+                <div class="author-box-description">
+                  <p>
+                    A personalized and simple way to get more done. All projects and lists customized to you. Trello’s boards, lists, and cards enable you to organize and prioritize your projects. Access From Anywhere. Agile Kanban Boards. Connect Other Apps. Join 25 Million People
+                  </p>
+                </div>
+                <div class="mb-2 mt-3">
+                  <div class="text-small fw-bold">Follow Hasan On</div>
+                </div>
+                <a href="#" onClick="return false;" class="btn btn-social-icon msr-1 btn-facebook">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" onClick="return false;" class="btn btn-social-icon msr-1 btn-twitter">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" onClick="return false;" class="btn btn-social-icon msr-1 btn-github">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="#" onClick="return false;" class="btn btn-social-icon msr-1 btn-instagram">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <div class="w-100 d-sm-none"></div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h4>Personal Details</h4>
+            </div>
+            <div class="card-body">
+              <div class="py-4">
+                <p class="clearfix">
+                  <span class="float-start">
+                    Birthday
+                  </span>
+                  <span class="float-end text-muted">
+                    {{data.birthday}}
+                  </span>
+                </p>
+                <p class="clearfix">
+                  <span class="float-start">
+                    Phone
+                  </span>
+                  <span class="float-end text-muted">
+                    {{data.mobil}}
+                  </span>
+                </p>
+                <p class="clearfix">
+                  <span class="float-start">
+                    Mail
+                  </span>
+                  <span class="float-end text-muted">
+                    {{data.email}}
+                  </span>
+                </p>
+              
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h4>Skills</h4>
+            </div>
+            <div class="card-body">
+              <ul class="list-unstyled user-progress list-unstyled-border list-unstyled-noborder">
+                <li class="media">
+                  <div class="media-body">
+                    <div class="media-title">Active</div>
+                  </div>
+                  <div class="media-progressbar p-t-10">
+                    <ngb-progressbar type="primary" [value]="55" height=".4rem"></ngb-progressbar>
+                  </div>
+                </li>
+                <li class="media">
+                  <div class="media-body">
+                    <div class="media-title">Update</div>
+                  </div>
+                  <div class="media-progressbar p-t-10">
+                    <ngb-progressbar type="success" [value]="67" height=".4rem"></ngb-progressbar>
+                  </div>
+                </li>
+                <li class="media">
+                  <div class="media-body">
+                    <div class="media-title">Experience</div>
+                  </div>
+                  <div class="media-progressbar p-t-10">
+                    <ngb-progressbar type="warning" [value]="72" height=".4rem"></ngb-progressbar>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-12 col-lg-8">
+          <div class="card">
+            <div class="padding-20">
+              <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+                <li [ngbNavItem]="1">
+                  <a ngbNavLink>Edit Profile</a>
+                  <ng-template ngbNavContent>
+                    <div class="card-header">
+                      <h4>Edit Profile</h4>
+                    </div>
+                    <div class="card-body">
+                      <form 
+                      class="register-form" 
+                      [formGroup]="updateProfileForm">
+                      <div class="row">
+                        <div class="form-group col-md-6 col-12">
+                          <label>First name <span class="text-danger">*</span></label>
+                          <input type="text" class="form-control " formControlName="firstName" placeholder="First Name"
+                          required>
+                          <div class="invalid-feedback">
+                            Please fill in the first name
+                          </div>
+                        </div>
+
+                        <div class="form-group col-md-6 col-12">
+                          <label>Last name <span class="text-danger">*</span></label>
+                          <input type="text" class="form-control " formControlName="lastName" placeholder="Last Name"
+                          required>
+                          <div class="invalid-feedback">
+                            Please fill in the last name
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="form-group col-12">
+                          <label>Birth Day <span class="text-danger">*</span></label>
+                          <input type="date" class="form-control" formControlName="birthday"
+                          required>
+                          <div class="invalid-feedback">
+                            Please fill in the first name
+                          </div>
+                        </div>
+                    </div>
+
+                      <div class="row">
+                        <div class="form-group col-md-7 col-12">
+                          <label>Phone<span class="text-danger">*</span></label>
+                          <input type="text" class="form-control " formControlName="mobil" placeholder="Phone" required>
+                          <div class="invalid-feedback">
+                            Please fill in the email
+                          </div>
+                        </div>
+                        <div class="form-group col-md-5 col-12">
+                          <label>Your Email <span class="text-danger">*</span></label>
+                          <input type="email" class="form-control " formControlName="email" placeholder="Email" required>
+                        </div>
+                      </div>
+                      <input type="hidden" class="form-control " formControlName="id" required>
+                      <input type="hidden" class="form-control " formControlName="password" required>
+                      <input type="hidden" class="form-control " formControlName="isActive" required>
+                      <input type="hidden" class="form-control " formControlName="userType" required>
+                      
+                      
+                    </form>
+
+                    </div>
+                    <div class="card-footer text-end">
+                      <button class="btn btn-primary" (click)="saveUser()">Save Changes</button>
+                    </div>
+
+                  </ng-template>
+                </li>
+                <li [ngbNavItem]="2">
+                  <a ngbNavLink>Reset Password</a>
+                  <ng-template ngbNavContent>
+                    <div class="card-header">
+                      <h4>Reset Password</h4>
+                    </div>
+                    <div class="card-body">
+
+                      <form 
+                      class="register-form" 
+                      [formGroup]="updatePasswrodForm">
+                      <div class="row">
+                        <div class="form-group col-12">
+                          <label>Current Password <span class="text-danger">*</span></label>
+                          <input type="password" class="form-control " formControlName="currentPassword" placeholder="Current Password "
+                          required>
+                          <div class="invalid-feedback">
+                            Please fill in the first name
+                          </div>
+                        </div>
+                      </div>
+                        
+                        <div class="row">
+                        <div class="form-group col-12">
+                          <label>New Password <span class="text-danger">*</span></label>
+                          <input type="password" class="form-control " formControlName="newPassword" placeholder="New Password "
+                          required>
+                          <div class="invalid-feedback">
+                            Please fill in the last name
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="form-group col-12">
+                          <label>Confirm Password <span class="text-danger">*</span></label>
+                          <input type="password" class="form-control " formControlName="confirmPassword" placeholder="Confirm Password "
+                          required>
+                          <div class="invalid-feedback">
+                            Please fill in the last name
+                          </div>
+                        </div>
+                      </div>
+                                       
+                      <input type="hidden" class="form-control " formControlName="id" required>
+                                    
+                      </form>
+                    </div>
+                    <div class="card-footer text-end">
+                      <button class="btn btn-primary" (click)="ChangePassword()">Save Password</button>
+                    </div>
+                  </ng-template>
+                </li>
+              </ul>
+              <div [ngbNavOutlet]="nav" class="mt-2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
