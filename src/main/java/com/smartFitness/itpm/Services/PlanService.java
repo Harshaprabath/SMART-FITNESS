@@ -78,4 +78,13 @@ public class PlanService implements IPlanService {
 
         return response;
     }
+
+    @Override
+    public Plan findById(Integer planId) {
+
+        Plan plan = planRepository.findById(planId)
+                .orElseThrow(() -> new ResourceNotFoundException("Plan", "id", planId));
+        return plan;
+
+    }
 }
