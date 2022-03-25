@@ -1,4 +1,216 @@
 
 <section class="main-content">
-    <p>diet-plan works!</p>
+  <ul class="breadcrumb breadcrumb-style ">
+    <li class="breadcrumb-item">
+      <h5 class="page-title m-b-0">Nutritionist</h5>
+    </li>
+    <li class="breadcrumb-item bcrumb-1">
+      <a routerLink="/dashboard/main">
+        <i class="fas fa-home font-17"></i></a>
+    </li>   
+    <li class="breadcrumb-item">Diat Plans</li>
+  </ul>
+  <div class="section-body">
+    <div class="row">
+      <div class="col-12 col-md-12 col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            
+            <form > <!--[formGroup]="subjectFilterForm"-->
+              <div class="col-12 p-0">
+                <div class="ngxTableHeader">
+                  <div class="table-title">
+                    <h2><strong>Diat Plans</strong></h2>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-12 p-0">
+                <div class="row">
+                  <div class="col-4">
+                    <div class="form-group position-relative">
+                      <label>Search</label>
+                      <i class="fas fa-search input-icons"></i>
+                      <input
+                        type="text"
+                        class="form-control psl-5"
+                        placeholder="Search by name"
+                        name="searchText"
+                        required=""
+                      />
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                      <div class="form-group">
+                        <label for="date"></label>
+
+                        <button
+                          class="btn btn-primary"
+                          style="margin-top: 30px"
+                          type="button" >
+                          Generate Report
+                        </button>
+                        <br>
+                        <div class="icon-button-demo buttons" style="padding-top: 10%;">
+                          <button 
+                            class="btn btn-icon icon-left btn-primary rounded-button"
+                            (click)='addNewPlan(addEditRecord)'>
+                            <i class="material-icons">add</i>
+                          </button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                    
+                </div>
+              </div>
+            </form>
+
+
+            <div class="section-body">
+              <div class="row">
+        
+                <div class="col-12 col-md-6 col-lg-6" *ngFor="let item of plan" >
+                  
+                  <div class="card">
+                      <div >
+                    <div class="card-header" style="background-color: rgb(66, 116, 145);">
+                      <h2 style="color: rgb(247, 248, 248);" *ngIf="item.planType == '1'">Weight Lost Diet Plans</h2>
+                      <h2 style="color: rgb(247, 248, 248);" *ngIf="item.planType == '2'">Maintainance Diet Plans</h2>
+                      <h2 style="color: rgb(247, 248, 248);" *ngIf="item.planType == '3'">Weight Gain Diet Plans</h2>
+                    </div>
+                    <div class="card-body" style="background-color: rgb(218, 238, 238);">     
+                      
+                      <h3><u>{{item.duration}}</u></h3><br>
+                      <h5>{{item.description}}</h5> 
+                    </div>
+                    <div class="card-footer text-end" style="background-color: rgb(218, 238, 238);">
+                      <div class="buttons">
+                        <span>
+                           <!--Plan Edit Button -->
+                          <button 
+                            class="btn btn-icon btn-sm btn-primary" 
+                            (click)='updatePlan(item, rowIndex, addEditRecord)'>
+                            <i class="far fa-edit"></i>
+                          </button>
+                           <!--Plan Delete Button -->
+                          <button 
+                            class="btn btn-icon btn-sm btn-danger" 
+                            (click)='deletePlan(item)'>
+                            <i class="far fa-trash-alt"></i>
+                          </button>
+                        </span>
+                      </div>  
+                    </div>
+                  </div>
+                  </div>
+                </div>
+        
+                 
+              </div>
+              
+          </div>
+
+              <!-- Add new Subject Modal Window -->
+              <ng-template #addEditRecord let-modal>
+                <div class="modal-header editRowModal">
+                  <h4 class="modal-title" id="modal-basic-title">
+                    <div class="table-modal-header">
+                      <div class="modal-about">
+                           <div class="fw-bold p-t-10 font-17" *ngIf="id==0">
+                            Add New User
+                           </div>
+                           <div class="fw-bold p-t-10 font-17" *ngIf="id!=0">
+                             Update User
+                            </div>
+                      </div>
+                    </div>
+                  </h4>
+                  <!-- Modal Close Button -->
+                  <button 
+                    type="button" 
+                    class="close" 
+                    aria-label="Close" 
+                    (click)="modal.dismiss()">
+                    <span aria-hidden="true">
+                      <i class="material-icons">close</i>
+                    </span>
+                  </button>
+                </div>
+  
+                <div class="modal-body">
+                  <form 
+                    class="register-form" 
+                    [formGroup]="planForm">
+                    
+                    <!-- First Form Row -->
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                        <label>Duration<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " formControlName="duration" placeholder="Duration"
+                        required>
+                        <small class="form-text text-danger" *ngIf="!planForm.get('duration').valid && planForm.get('duration').touched "> 
+                          Duration is required
+                        </small>
+                      </div>
+  
+                      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                        <label>Description <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control " formControlName="description" placeholder="Description"
+                        required>
+                         <small class="form-text text-danger" *ngIf="!planForm.get('description').valid && planForm.get('description').touched "> 
+                          Description is required
+                        </small> 
+                      </div>
+  
+                      
+                      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                        <div class="form-group">
+                          <label>Plan Type<span class="text-danger">*</span></label>
+                          <select class="form-select form-control" formControlName="planType" placeholder="Select">
+                            <option  [ngValue]="1">Weight Lost Diet Plans</option>
+                            <option  [ngValue]="2">Maintainance Diet Plans</option>
+                            <option  [ngValue]="3">Weight Gain Diet Plans</option>
+                          </select>
+                        <small class="form-text text-danger" *ngIf="!planForm.get('planType').valid && planForm.get('planType').touched "> 
+                          Plan Type is required
+                       </small>
+                        </div>
+                      </div> 
+  
+                     
+                    </div>
+                      <!-- Modal Footer -->
+                    <div class="modal-footer">
+                      <!-- Save Subject Button -->
+                      <button 
+                        type="button" 
+                        class="btn btn-primary" 
+                        (click)="savePlan()" 
+                        [disabled]="!planForm.valid">
+                        Save Plan
+                      </button>
+                      <!-- Modal Close Button -->
+                      <button 
+                        type="button" 
+                        class="btn btn-light" 
+                        (click)="modal.close('Close click')">
+                        Close
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </ng-template>
+
+
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
 </section>
