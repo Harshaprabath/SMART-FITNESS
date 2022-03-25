@@ -39,4 +39,10 @@ public class PlanController {
         return planService.savePlan(plan);
     }
 
+    // Get a Single plan
+    @GetMapping("/find/{id}")
+    public Plan getPlanById(@PathVariable(value = "id") Integer planId) {
+        return planService.findById(planId);
+    }
+
 }
