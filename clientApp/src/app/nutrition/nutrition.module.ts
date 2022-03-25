@@ -10,7 +10,13 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { NgxGaugeModule } from 'ngx-gauge';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ArchwizardModule } from 'angular-archwizard';
+import { CustomFormsModule } from 'ngx-custom-validators';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { NgxMaskModule } from 'ngx-mask';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -31,7 +37,15 @@ import { NgxGaugeModule } from 'ngx-gauge';
     NgApexchartsModule,
     NgxGaugeModule,
     CommonModule,
-    NutritionRoutingModule
+    NutritionRoutingModule,
+    NgSelectModule,
+    CKEditorModule,
+    ArchwizardModule,
+    CustomFormsModule,   
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule ,
+    ToastrModule.forRoot(),
   ]
 })
 export class NutritionModule { }
