@@ -1,6 +1,4 @@
 package com.smartFitness.itpm.Controllers;
-
-
 import com.smartFitness.itpm.Models.Plan;
 import com.smartFitness.itpm.Services.PlanService;
 import com.smartFitness.itpm.ViewModel.Response;
@@ -42,7 +40,7 @@ public class PlanController {
     // Get a Single plan
     @GetMapping("/find/{id}")
     public Plan getPlanById(@PathVariable(value = "id") Integer planId) {
+
         return planService.findById(planId);
     }
-
 }
