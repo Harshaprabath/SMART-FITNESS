@@ -85,6 +85,5 @@ public class PlanService implements IPlanService {
         Plan plan = planRepository.findById(planId)
                 .orElseThrow(() -> new ResourceNotFoundException("Plan", "id", planId));
         return plan;
-
     }
 }
