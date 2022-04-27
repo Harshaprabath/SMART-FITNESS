@@ -139,11 +139,12 @@ export class UsersListComponent implements OnInit {
         }
         else if(response.isSuccess)
         {
+
           this.modalService.dismissAll();
           this.toastr.success(response.message,"Success");
           this.getAll();
           
-        }
+         }
         else
         {
           this.toastr.error(response.message,"Error");
