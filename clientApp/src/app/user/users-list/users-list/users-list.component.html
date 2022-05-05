@@ -53,7 +53,7 @@
                               class="btn btn-primary"
                               style="margin-top: 30px"
                               type="button"
-                                            >
+                              (click)="generateReport()" >
                               Generate Report
                             </button>
                           </div>
@@ -134,7 +134,7 @@
                 <ngx-datatable-column name="Type" [width]="100">
                   <ng-template let-row="row" ngx-datatable-cell-template>
                   <div *ngIf="row.userType == '1'"> Admin </div>
-                  <div *ngIf="row.userType == '2'"> Custemer </div>
+                  <div *ngIf="row.userType == '2'"> Customer </div>
                   <div *ngIf="row.userType == '3'"> Weight Trainer </div>
                   <div *ngIf="row.userType == '4'"> Cardio Trainer </div>
                   <div *ngIf="row.userType == '5'"> Nutritionist </div>

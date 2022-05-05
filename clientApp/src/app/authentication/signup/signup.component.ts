@@ -60,7 +60,7 @@ export class SignupComponent implements OnInit {
             console.log(res);
             if(res.isSuccess) {
                
-                this.router.navigate(['/user/user-profile']);
+                this.router.navigate(['/authentication/signin']);
               
             } else {
               this.error = 'Invalid Login';

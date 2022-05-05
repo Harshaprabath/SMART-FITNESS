@@ -7,13 +7,17 @@ import com.smartFitness.itpm.ViewModel.Response;
 import com.smartFitness.itpm.Models.User;
 import com.smartFitness.itpm.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+
 @Service
+@Transactional
 public class UserService implements IUserService {
 
     @Autowired
@@ -127,6 +131,16 @@ public class UserService implements IUserService {
     @Override
     public User findCurrentUser() {
         return currentUser.getCurrentUser();
+    }
+
+
+    public List<User> listAll() {
+
+        List<User> users = (List<User>) userRepository.findAll();
+        users.sort((o1, o2)
+                -> o1.getFirstName().compareTo(
+                o2.getFirstName()));
+        return users;
     }
 
 }

@@ -52,4 +52,8 @@ export class UserService {
       get<User>(environment.apiUrl + '/user/find/' + id +'/'+password);
   }
 
+  downloadUserListReport(): Observable<any> {
+    return this.httpClient.get<any>
+    (environment.apiUrl +'/user/export/pdf');
+  }
 }
