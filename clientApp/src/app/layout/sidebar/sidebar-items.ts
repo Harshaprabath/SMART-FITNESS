@@ -11,12 +11,13 @@ export const ROUTES: RouteInfo[] = [
     badge: '',
     badgeClass: '',
     submenu: [],
+    isVisible: true,
   },
 
  
   {
     path: '',
-    title: 'MENUITEMS.HOME.TEXT',
+    title: 'ADMIN',
     moduleName: 'user',
     iconType: 'feather',
     icon: 'monitor',
@@ -24,6 +25,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    isVisible: false,
     submenu: [
 
       {
@@ -36,6 +38,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        isVisible: true,
         submenu: [],
       },
      
@@ -49,6 +52,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        isVisible: true,
         submenu: [],
       },
     ],
@@ -56,14 +60,15 @@ export const ROUTES: RouteInfo[] = [
 
   {
     path: '',
-    title: 'MENUITEMS.HOME.TEXT',
+    title: 'Services',
     moduleName: 'user-service',
     iconType: 'feather',
-    icon: 'monitor',
+    icon: 'chevrons-down',
     class: 'menu-toggle',
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    isVisible: false,
     submenu: [
 
       {
@@ -76,6 +81,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        isVisible: true,
         submenu: [],
       },
      
@@ -89,6 +95,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        isVisible: true,
         submenu: [],
       },
       {
@@ -101,13 +108,14 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        isVisible: true,
         submenu: [],
       },
     ],
   },
   {
     path: '',
-    title: 'MENUITEMS.HOME.TEXT',
+    title: 'NUTRITION',
     moduleName: 'nutrition',
     iconType: 'feather',
     icon: 'monitor',
@@ -115,6 +123,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    isVisible: false,
     submenu: [
 
       {
@@ -127,6 +136,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        isVisible: true,
         submenu: [],
       },
      
@@ -140,6 +150,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        isVisible: true,
         submenu: [],
       },
       {
@@ -152,6 +163,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        isVisible: true,
         submenu: [],
       },
     ],
@@ -159,7 +171,7 @@ export const ROUTES: RouteInfo[] = [
 
   {
     path: '',
-    title: 'MENUITEMS.HOME.TEXT',
+    title: 'WEIGHT-GAIN',
     moduleName: 'weight-gain',
     iconType: 'feather',
     icon: 'monitor',
@@ -167,6 +179,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    isVisible: false,
     submenu: [
 
       {
@@ -179,6 +192,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        isVisible: true,
         submenu: [],
       },
      
@@ -192,6 +206,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        isVisible: true,
         submenu: [],
       },
       {
@@ -204,6 +219,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        isVisible: true,
         submenu: [],
       },
     ],

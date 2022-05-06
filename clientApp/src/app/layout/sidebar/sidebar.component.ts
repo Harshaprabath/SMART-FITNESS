@@ -35,7 +35,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   listMaxWidth: string;
   userFullName: string;
   userImg: string;
-  userType: string;
+ // userType: string;
   headerHeight = 60;
   routerObj = null;
   currentRoute: string;
@@ -105,12 +105,63 @@ export class SidebarComponent implements OnInit, OnDestroy {
     }
   }
   ngOnInit() {
-    if (this.authService.currentUserValue) {
-      this.sidebarItems = ROUTES.filter((sidebarItem) => sidebarItem);
-    }
+    
+    this.getCurrentuser();
+
+    if (this.userService.getCurrentUser) {
+        this.userService.getCurrentUser()
+        .subscribe(response=>
+        { 
+        
+        this.data= response;
+        
+          this.sidebarItems = ROUTES.filter((sidebarItem) => 
+          {   
+              sidebarItem.isVisible= false; 
+
+              if(sidebarItem.title=="ADMIN" || sidebarItem.title=="Services" )
+              {
+                  if(this.data.userType == 1 )
+                  {   
+                      sidebarItem.isVisible= true;
+                  }
+              
+              }
+
+              if(sidebarItem.title=="NUTRITION")
+              {
+                
+                if(this.data.userType == 5 )
+                  {   
+                      sidebarItem.isVisible= true;
+                  }
+              
+              }
+
+              if(sidebarItem.title=="WEIGHT-GAIN")
+              {
+                
+                  if(this.data.userType == 3 )
+                  {              
+                      sidebarItem.isVisible= true;
+                  }
+              
+              }
+
+              return sidebarItem
+          });
+      
+        },error=>{
+        
+          this.loadingIndicator=false;
+        
+        });
+    } 
+    
+ 
     this.initLeftSidebar();
     this.bodyTag = this.document.body;
-    this.getCurrentuser();
+    
   }
   ngOnDestroy() {
     this.routerObj.unsubscribe();
@@ -164,9 +215,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
   this.userService.getCurrentUser()
   .subscribe(response=>
   {   
-      console.log(response);
+     
       this.data= response;
-
+      
       if (this.data.userType == 1){
          this.usertype = "Admin";
       }else if (this.data.userType == 2){
@@ -174,7 +225,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
       }else if (this.data.userType == 3){
         this.usertype ="Weight Trainer";
       }else if (this.data.userType == 4){
-        this.userType ="Cardio Trainer";
+        this.usertype ="Cardio Trainer";
       }
       else {
         this.usertype ="Nutritionist";
@@ -185,6 +236,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
      
   });
 }
+
 }
 
 
