@@ -1,3 +1,4 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -139,11 +140,12 @@ export class UsersListComponent implements OnInit {
         }
         else if(response.isSuccess)
         {
+
           this.modalService.dismissAll();
           this.toastr.success(response.message,"Success");
           this.getAll();
           
-        }
+         }
         else
         {
           this.toastr.error(response.message,"Error");
@@ -196,6 +198,27 @@ export class UsersListComponent implements OnInit {
     return this.userForm.get("id").value;
   }
 
+   //file Grnarate method
+  
+   generateReport()
+   {
+     this.spinner.show();
+ 
+     this.userService.downloadUserListReport().subscribe((response:HttpResponse<Blob>)=>{
+      
+     },error=>{
+         this.spinner.hide();
+         
+     });
+   }
+ 
+ 
+   parseFilenameFromContentDisposition(contentDisposition) {
+     if (!contentDisposition) return null;
+     let matches = /filename="(.*?)"/g.exec(contentDisposition);
+ 
+     return matches && matches.length > 1 ? matches[1] : null;
+   }
   
 
 
