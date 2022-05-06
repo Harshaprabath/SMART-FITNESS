@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
+<<<<<<< HEAD
 
+=======
+   // canActivate: [AuthGuard],
+>>>>>>> b08273ffe26327fe8930b63100ffd8235f4a8b79
     children: [
       { path: '', redirectTo: '/authentication/signin', pathMatch: 'full' },
      
