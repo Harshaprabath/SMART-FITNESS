@@ -6,20 +6,7 @@ import { AuthGuard } from './core/guard/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    component: MainLayoutComponent,
-
-    children: [
-      { path: '', redirectTo: '/authentication/signin', pathMatch: 'full' },
-     
-      {
-        path: 'user',
-        loadChildren: () =>
-          import('./user/user.module').then((m) => m.UserModule),
-      },
-      {
-        path: 'user-service',
-        loadChildren: () =>
-          import('./user-service/user-service.module').then((m) => m.UserServiceModule),
+    component: MainLayoutComponent,     import('./user-service/user-service.module').then((m) => m.UserServiceModule),
       },  
       {
         path: 'nutrition',
