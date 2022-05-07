@@ -7,7 +7,7 @@ import java.util.List;
 public interface IRecipeService {
 
     public List<Recipe> findAllRecipes();
-    public Response deleteRecipes(Integer plansId);
+    public Response deleteRecipes(Integer recipeId);
     public Response saveRecipe(Recipe NewRecipe);
     public Recipe findById(Integer recipeId);
 }

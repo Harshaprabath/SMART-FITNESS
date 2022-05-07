@@ -18,6 +18,7 @@ public class RecipeService implements IRecipeService {
     private RecipeRepository recipeRepository;
 
 
+    @Override
     public List<Recipe> findAllRecipes() {
 
         List<Recipe> recipes = (List<Recipe>) recipeRepository.findAll();
