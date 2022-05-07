@@ -3,6 +3,7 @@ package com.smartFitness.itpm.Services;
 import com.smartFitness.itpm.Exceptions.ResourceNotFoundException;
 import com.smartFitness.itpm.IServices.IRecipeService;
 import com.smartFitness.itpm.Models.Recipe;
+import com.smartFitness.itpm.Models.User;
 import com.smartFitness.itpm.Repositories.RecipeRepository;
 import com.smartFitness.itpm.ViewModel.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,4 +89,5 @@ public class RecipeService implements IRecipeService {
 
         return recipe;
     }
+
 }

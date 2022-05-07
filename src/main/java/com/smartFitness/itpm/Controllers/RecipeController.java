@@ -1,11 +1,19 @@
 package com.smartFitness.itpm.Controllers;
+import com.itextpdf.text.DocumentException;
 import com.smartFitness.itpm.Models.Recipe;
+import com.smartFitness.itpm.Models.User;
+import com.smartFitness.itpm.PDFExporter.UserPDFExporter;
 import com.smartFitness.itpm.Services.RecipeService;
 import com.smartFitness.itpm.ViewModel.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @CrossOrigin
@@ -44,4 +52,5 @@ public class RecipeController {
 
         return recipeService.findById(recipeId);
     }
+
 }
