@@ -230,27 +230,6 @@ export class UsersListComponent implements OnInit {
    }
 
   //search
-  search(name){
-    this.loadingIndicator = true;
-    this.userService.search(name)
-    .subscribe(response=>{
-      this.data= response;
-      
-      this.spinner.hide();
-      this.loadingIndicator = false;
-
-    },error=>{
-      this.spinner.hide();
-      this.loadingIndicator = false;
-      this.toastr.error("Network error has been occured. Please try again.","Error");
-    });
-  }
- 
-
- 
-
-  
-
    onSubmit(){
     this.submitted = true;
     
