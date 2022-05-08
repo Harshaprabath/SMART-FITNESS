@@ -71,7 +71,7 @@ export class DietPlanComponent implements OnInit {
 
  }
 
-  //save user 
+  //save plan 
   savePlan()
   {   
     this.planService.savePlan(this.planForm.value)
@@ -90,7 +90,7 @@ export class DietPlanComponent implements OnInit {
 
   }
 
-  //delete uaer
+  //delete plan
   deletePlan(row) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
