@@ -1,4 +1,229 @@
-
 <section class="main-content">
-    <p>exercise-plans works!</p>
-</section>
+    <ul class="breadcrumb breadcrumb-style ">
+      <li class="breadcrumb-item">
+        <h5 class="page-title m-b-0">Weight Gain</h5>
+      </li>
+      <li class="breadcrumb-item bcrumb-1">
+        <a routerLink="/dashboard/main">
+          <i class="fas fa-home font-17"></i></a>
+      </li>   
+      <li class="breadcrumb-item">Excercise Plans</li>
+    </ul>
+    <div class="section-body">
+      <div class="row">
+        <div class="col-12 col-md-12 col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              
+              <form > <!--[formGroup]="subjectFilterForm"-->
+                <div class="col-12 p-0">
+                  <div class="ngxTableHeader">
+                    <div class="table-title">
+                      <h1><strong>Excercise Plans</strong></h1>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-12 p-0">
+                  <div class="row">
+                    <div class="col-4">
+                      <div class="form-group position-relative">
+                        <label>Search</label>
+                        <i class="fas fa-search input-icons"></i>
+                        <input
+                          type="text"
+                          class="form-control psl-5"
+                          placeholder="Search by name"
+                          name="searchText"
+                          required=""
+                        />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <label for="date"></label>
+  
+                          <button
+                            class="btn btn-primary"
+                            style="margin-top: 30px"
+                            type="button" >
+                            Generate Report
+                          </button>
+                          <br>
+                          <div class="icon-button-demo buttons" style="padding-top: 10%;">
+                            <button 
+                              class="btn btn-icon icon-left btn-primary rounded-button"
+                              (click)='newWeightPlanForm(addEditRecord)'>
+                              <i class="material-icons">add</i>
+                            </button>
+                          </div>
+  
+                        </div>
+                      </div>
+                    </div>
+                      
+                  </div>
+                </div>
+              </form>
+  
+  
+              <div class="section-body">
+                <div class="row">
+          
+                  <div class="col-12 col-md-6 col-lg-6" *ngFor="let item of weight" >
+                    
+                    <div class="card">
+                        <div >
+                      <div class="card-header" style="background-color: rgb(209, 94, 0);">
+                        <h2 style="color: rgb(255, 255, 255);" ><u>{{item.title}}</u></h2>
+                      </div>
+                      <div class="card-body" style="background-color: rgb(218, 238, 238);">     
+                        
+                        <h5 style="color: black;">{{item.description}}</h5><br>
+                        <h3 style="font-weight: bold; color: black;">Rs. {{item.price}}</h3> 
+                      </div>
+                      <div class="card-footer text-end" style="background-color: rgb(218, 238, 238);">
+                        <div class="buttons">
+                          <span>
+                             <!--Plan Edit Button -->
+                            <button 
+                              class="btn btn-icon btn-sm btn-primary" 
+                              (click)='updateWeightPlan(item, rowIndex, addEditRecord)'>
+                              <i class="far fa-edit"></i>
+                            </button>
+                             <!--Plan Delete Button -->
+                            <button 
+                              class="btn btn-icon btn-sm btn-danger" 
+                              (click)='deleteWeightPlan(item)'>
+                              <i class="far fa-trash-alt"></i>
+                            </button>
+                          </span>
+                        </div>  
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+          
+                   
+                </div>
+                
+            </div>
+  
+                <!-- Add new excercise plan Modal Window -->
+                <ng-template #addEditRecord let-modal>
+                  <div class="modal-header editRowModal">
+                    <h4 class="modal-title" id="modal-basic-title">
+                      <div class="table-modal-header">
+                        <div class="modal-about">
+                             <div class="fw-bold p-t-10 font-17" *ngIf="id==0">
+                              Add New Excercise plan
+                             </div>
+                             <div class="fw-bold p-t-10 font-17" *ngIf="id!=0">
+                               Update Plan
+                             </div>
+                        </div>
+                      </div>
+                    </h4>
+                    <!-- Modal Close Button -->
+                    <button 
+                      type="button" 
+                      class="close" 
+                      aria-label="Close" 
+                      (click)="modal.dismiss()">
+                      <span aria-hidden="true">
+                        <i class="material-icons">close</i>
+                      </span>
+                    </button>
+                  </div>
+    
+                  <div class="modal-body">
+                    <form 
+                      class="register-form" 
+                      [formGroup]="weightForm">
+                      
+                      <!-- First Row -->
+                      <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                          <label>Title<span class="text-danger">*</span></label>
+                          <input type="text" class="form-control " formControlName="title" placeholder="Title"
+                          required>
+                          <small class="form-text text-danger" *ngIf="!weightForm.get('title').valid && weightForm.get('title').touched "> 
+                            Title is required
+                          </small>
+                        </div>
+                      </div>
+    
+                      <!--Second row-->
+                      <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                          <label>Description <span class="text-danger">*</span></label>
+                          <input type="text" class="form-control " formControlName="description" placeholder="Description"
+                          required>
+                           <small class="form-text text-danger" *ngIf="!weightForm.get('description').valid && weightForm.get('description').touched "> 
+                            Description is required
+                        </small>
+                        </div>
+                      </div>
+                        
+                      <!--Third row-->
+                      <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                          <div class="form-group">
+                            <label>Excercise Plan Type<span class="text-danger">*</span></label>
+                            <select class="form-select form-control" formControlName="planType" placeholder="Select">
+                              <option  [ngValue]="1">Hammer curls plan</option>
+                              <option  [ngValue]="2">Push-up plan</option>
+                              <option  [ngValue]="3">Seated bicep curls plan</option>
+                            </select>
+                          <small class="form-text text-danger" *ngIf="!weightForm.get('planType').valid && weightForm.get('planType').touched "> 
+                            Plan Type is required
+                         </small>
+                          </div>
+                        </div>
+                        </div>
+
+                        <!--forth row-->
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                              <label>Price <span class="text-danger">*</span></label>
+                              <input type="text" class="form-control " formControlName="price" placeholder="Price"
+                              required>
+                               <small class="form-text text-danger" *ngIf="!weightForm.get('description').valid && weightForm.get('description').touched "> 
+                                Description is required
+                            </small>
+                            </div>
+                          </div>
+                       
+
+                        <!-- Modal Footer -->
+                      <div class="modal-footer">
+                        <!-- Save Plan Button -->
+                        <button 
+                          type="button" 
+                          class="btn btn-primary" 
+                          (click)="saveWeightPlan()" 
+                          [disabled]="!weightForm.valid">
+                          Save
+                        </button>
+                        <!-- Modal Close Button -->
+                        <button 
+                          type="button" 
+                          class="btn btn-light" 
+                          (click)="modal.close('Close click')">
+                          Close
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </ng-template>
+  
+  
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </section>
