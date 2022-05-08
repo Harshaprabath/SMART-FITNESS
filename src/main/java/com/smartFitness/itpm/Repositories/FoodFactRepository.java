@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface FoodFactRepository extends CrudRepository<FoodFact, Integer> {
 
-    //search query
+    //search food fact details query
     @Query(value = "SELECT * FROM foodfact f WHERE f.food_name LIKE ?1% ",nativeQuery = true)
     List<FoodFact> foodFactSearch(String foodName);
 }

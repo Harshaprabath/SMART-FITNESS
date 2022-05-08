@@ -3,6 +3,7 @@ package com.smartFitness.itpm.Controllers;
 import com.smartFitness.itpm.Models.Nutritionist;
 import com.smartFitness.itpm.Services.NutritionistService;
 import com.smartFitness.itpm.ViewModel.Response;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

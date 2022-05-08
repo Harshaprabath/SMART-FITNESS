@@ -46,6 +46,7 @@ export class FoodFactsComponent implements OnInit {
 
   }
 
+  //get all food facts details
   getAllFoodFact()
    {
      this.foodFactService.getAll()
@@ -58,7 +59,7 @@ export class FoodFactsComponent implements OnInit {
        });
    }
 
-     //save food fact form
+  //save food facts details form
   addNewFoodFact(content)
   {
 
@@ -76,7 +77,7 @@ export class FoodFactsComponent implements OnInit {
 
  }
 
-  //save food fact 
+  //save food facts details 
   saveFoodFact()
   {   
     this.foodFactService.saveFoodFact(this.foodfactForm.value)
@@ -95,7 +96,7 @@ export class FoodFactsComponent implements OnInit {
 
   }
 
-  //delete food fact
+  //delete food facts details
   deleteFoodFact(row) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -141,7 +142,7 @@ export class FoodFactsComponent implements OnInit {
     return this.foodfactForm.get("id").value;
   }
 
-  //update food fact (Reactive Form)
+  //update food facts details (Reactive Form)
   updateFoodFact(row:FoodFact, rowIndex:number, content:any) 
   {
 
@@ -169,7 +170,7 @@ export class FoodFactsComponent implements OnInit {
   }
 
 
-//search
+  //search food facts details
    onSubmit(){
     this.submitted = true;
     
@@ -197,7 +198,5 @@ export class FoodFactsComponent implements OnInit {
      }
            
   }
-
-  
 
 }

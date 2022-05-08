@@ -19,6 +19,7 @@ public class FoodFactService implements IFoodFactService {
     private FoodFactRepository foodFactRepository;
 
 
+    // get all food facts details
     @Override
     public List<FoodFact> findAllFoodFacts() {
         List<FoodFact> foodFacts = (List<FoodFact>) foodFactRepository.findAll();
@@ -35,6 +36,7 @@ public class FoodFactService implements IFoodFactService {
         return ActiveFoodFacts;
     }
 
+    // delete food facts details
     @Override
     public Response deleteFoodFacts(Integer foodFactId) {
         Response response = new Response();
@@ -55,6 +57,7 @@ public class FoodFactService implements IFoodFactService {
         return response;
     }
 
+    // save food facts details
     @Override
     public Response saveFoodFact(FoodFact newFoodFact) {
         Response response = new Response();
@@ -78,6 +81,7 @@ public class FoodFactService implements IFoodFactService {
         return response;
     }
 
+    // get a single food facts detail
     @Override
     public FoodFact findFoodFactById(Integer foodFactId) {
         FoodFact foodFact = foodFactRepository.findById(foodFactId)
@@ -85,7 +89,7 @@ public class FoodFactService implements IFoodFactService {
         return foodFact;
     }
 
-    //search
+    //search food facts details by name
     @Override
     public List<FoodFact> foodFactSearch(String foodName){
 

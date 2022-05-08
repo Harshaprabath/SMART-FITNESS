@@ -27,34 +27,35 @@ public class PlanController {
     @Autowired
     private PlanService planService;
 
-    // get all plan
+    // get all diet plans
     @GetMapping("/all")
     public List<Plan> findAllPlans() {
 
         return planService.findAllPlans();
     }
 
-    // Delete plan
+    // delete diet plan
     @DeleteMapping("/delete/{id}")
     public Response deletePlans(@PathVariable(value = "id") Integer planId) {
 
         return planService.deletePlans(planId);
     }
 
-    // add and update plan
+    // add and update diet plans
     @PostMapping("/save")
     public Response savePlan(@Valid @RequestBody Plan plan) {
 
         return planService.savePlan(plan);
     }
 
-    // Get a Single plan
+    // get a single diet plan
     @GetMapping("/find/{id}")
     public Plan getPlanById(@PathVariable(value = "id") Integer planId) {
 
         return planService.findById(planId);
     }
 
+    // generate diet plans list report
     @GetMapping("/export/pdf")
     public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
         response.setContentType("application/pdf");

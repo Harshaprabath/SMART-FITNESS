@@ -42,7 +42,6 @@ public class PlanPDFExporter {
 
     private void writeTableData(PdfPTable table) {
         for (Plan plan : listAllPlans) {
-           // table.addCell(String.valueOf(plan.getPlanType()));
 
             EnPlanType enPlanType = new EnPlanType();
             table.addCell(enPlanType.enPlanType(plan.getPlanType()));

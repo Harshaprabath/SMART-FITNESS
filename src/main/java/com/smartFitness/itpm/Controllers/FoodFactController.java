@@ -1,8 +1,6 @@
 package com.smartFitness.itpm.Controllers;
 
-
 import com.smartFitness.itpm.Models.FoodFact;
-import com.smartFitness.itpm.Models.User;
 import com.smartFitness.itpm.Services.FoodFactService;
 import com.smartFitness.itpm.ViewModel.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +18,7 @@ public class FoodFactController {
     @Autowired
     private FoodFactService foodFactService;
 
-    // get all food facts
+    //get all food fact details
     @GetMapping("/all")
     public List<FoodFact> findAllFoodFacts() {
 
@@ -28,7 +26,7 @@ public class FoodFactController {
     }
 
 
-    //delete food fact
+    //delete food fact details
     @DeleteMapping("/delete/{id}")
     public Response deleteFoodFacts(@PathVariable(value = "id") Integer foodFactId) {
 
@@ -36,7 +34,7 @@ public class FoodFactController {
     }
 
 
-    //save food fact
+    //save food facts details
     @PostMapping("/save")
     public Response saveFoodFact(@Valid @RequestBody FoodFact newFoodFact) {
 
@@ -44,14 +42,14 @@ public class FoodFactController {
     }
 
 
-    // Get a Single plan
+    // get a single food fact
     @GetMapping("/find/{id}")
     public FoodFact findFoodFactById(@PathVariable(value = "id") Integer foodFactId) {
 
         return foodFactService.findFoodFactById(foodFactId);
     }
 
-    //search food fact
+    //search food facts
     @GetMapping("/Search/{foodName}")
     public List<FoodFact> Search (@PathVariable(value = "foodName") String foodName) {
 

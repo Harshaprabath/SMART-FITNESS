@@ -12,24 +12,26 @@ export class RecipeService {
 
   constructor(private httpClient: HttpClient) { }
 
+  //get all recipes service
   getAll(): Observable<Recipe[]> {
     return this.httpClient.
       get<Recipe[]>(environment.apiUrl + '/recipe/all');
   }
 
-  //Save service
+  //save all recipes service
   saveRecipe(vm:Recipe): Observable<ResponseVM>  {
     return this.httpClient.
         post<ResponseVM> 
         (environment.apiUrl + '/recipe/save',vm);
   }
 
-  //Delete service
+  //delete recipes service
   delete(id: number): Observable<ResponseVM> {
     return this.httpClient.
       delete<ResponseVM>(environment.apiUrl + '/recipe/delete/' + id);
   }
 
+  //get a single recipe service
   getRecipeById(id: number): Observable<Recipe> {
     return this.httpClient.
       get<Recipe>(environment.apiUrl + '/recipe/find/' + id);

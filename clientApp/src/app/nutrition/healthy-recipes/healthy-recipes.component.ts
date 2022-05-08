@@ -40,6 +40,7 @@ export class HealthyRecipesComponent implements OnInit {
 
   }
 
+  //get all recipes
   getAllRecipe()
    {
      this.recipeService.getAll()
@@ -70,7 +71,7 @@ export class HealthyRecipesComponent implements OnInit {
 
  }
 
-  //save recipe 
+  //save recipes 
   saverecipe()
   {   
     this.recipeService.saveRecipe(this.recipeForm.value)
@@ -89,7 +90,7 @@ export class HealthyRecipesComponent implements OnInit {
 
   }
 
-  //delete recipe
+  //delete recipes
   deleteRecipe(row) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {

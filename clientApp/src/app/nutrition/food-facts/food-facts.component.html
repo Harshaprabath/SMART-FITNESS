@@ -4,10 +4,12 @@
       <li class="breadcrumb-item">
         <h5 class="page-title m-b-0">Nutritionist</h5>
       </li>
+
       <li class="breadcrumb-item bcrumb-1">
         <a routerLink="/dashboard/main">
           <i class="fas fa-home font-17"></i></a>
-      </li>   
+      </li>
+
       <li class="breadcrumb-item">Food Fact Details</li>
     </ul>
     <div class="section-body">
@@ -37,8 +39,8 @@
                           placeholder="Search by name"
                           formControlName="foodName"
                           name="searchText"
-                          required=""
-                        />
+                          required=""/>
+
                         <button class="btn btn-primary auth-form-btn" >Search</button>
                       </div>
                     </div>
@@ -53,7 +55,9 @@
                             type="button" >
                             Generate Report
                           </button>
+
                           <br>
+
                           <div class="icon-button-demo buttons" style="padding-top: 10%;">
                             <button 
                               class="btn btn-icon icon-left btn-primary rounded-button"
@@ -69,8 +73,7 @@
                   </div>
                 </div>
               </form>
-  
-  
+    
               <div class="section-body">
                 <div class="row">
           
@@ -87,13 +90,13 @@
                       <div class="card-footer text-end" style="background-color: rgb(218, 238, 238);">
                         <div class="buttons">
                           <span>
-                             <!--Food Fact Edit Button -->
+                             <!--Food Fact details Edit Button -->
                             <button 
                               class="btn btn-icon btn-sm btn-primary" 
                               (click)='updateFoodFact(item, rowIndex, addEditRecord)'>
                               <i class="far fa-edit"></i>
                             </button>
-                             <!--Food Fact Delete Button -->
+                             <!--Food Fact details Delete Button -->
                             <button 
                               class="btn btn-icon btn-sm btn-danger" 
                               (click)='deleteFoodFact(item)'>
@@ -111,7 +114,7 @@
                 
             </div>
   
-                <!-- Add new Subject Modal Window -->
+                <!-- Add new food fact details Modal Window -->
                 <ng-template #addEditRecord let-modal>
                   <div class="modal-header editRowModal">
                     <h4 class="modal-title" id="modal-basic-title">
@@ -162,22 +165,7 @@
                             Description is required
                           </small> 
                         </div>
-    
-                        <!--
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-                          <div class="form-group">
-                            <label>Plan Type<span class="text-danger">*</span></label>
-                            <select class="form-select form-control" formControlName="planType" placeholder="Select">
-                              <option  [ngValue]="1">Weight Lost Diet Plans</option>
-                              <option  [ngValue]="2">Maintainance Diet Plans</option>
-                              <option  [ngValue]="3">Weight Gain Diet Plans</option>
-                            </select>
-                          <small class="form-text text-danger" *ngIf="!planForm.get('planType').valid && planForm.get('planType').touched "> 
-                            Plan Type is required
-                         </small>
-                          </div>
-                        </div> -->
-    
+                            
                        
                       </div>
                         <!-- Modal Footer -->
@@ -201,8 +189,7 @@
                     </form>
                   </div>
                 </ng-template>
-  
-  
+   
              
             </div>
           </div>

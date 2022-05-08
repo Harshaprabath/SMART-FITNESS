@@ -55,6 +55,7 @@ export class DietPlanComponent implements OnInit {
   }
 
    
+   //get all diet plans
    getAllplan()
    {
      this.planService.getAll()
@@ -67,7 +68,7 @@ export class DietPlanComponent implements OnInit {
        });
    }
 
-     //save plan form
+     //save diet plan form
   addNewPlan(content)
   {
 
@@ -86,7 +87,7 @@ export class DietPlanComponent implements OnInit {
 
  }
 
-  //save plan 
+  //save diet plan
   savePlan()
   {   
     this.planService.savePlan(this.planForm.value)
@@ -105,7 +106,7 @@ export class DietPlanComponent implements OnInit {
 
   }
 
-  //delete plan
+  //delete diet plan
   deletePlan(row) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -151,7 +152,7 @@ export class DietPlanComponent implements OnInit {
     return this.planForm.get("id").value;
   }
 
-  //update plan (Reactive Form)
+  //update diet plan (Reactive Form)
   updatePlan(row:Plan, rowIndex:number, content:any) 
   {
 
@@ -180,7 +181,7 @@ export class DietPlanComponent implements OnInit {
   } 
 
 
-  //report generate
+  //diet plan report generate
   
   generateReport()
   {
