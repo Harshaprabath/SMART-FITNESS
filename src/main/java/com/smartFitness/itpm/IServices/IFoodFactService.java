@@ -11,4 +11,5 @@ public interface IFoodFactService {
     public Response deleteFoodFacts(Integer foodFactId);
     public Response saveFoodFact(FoodFact newFoodFact);
     public FoodFact findFoodFactById(Integer foodFactId);
+    public List<FoodFact> foodFactSearch(String name);
 }

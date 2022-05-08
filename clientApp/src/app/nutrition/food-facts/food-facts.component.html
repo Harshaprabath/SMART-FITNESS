@@ -16,7 +16,7 @@
           <div class="card">
             <div class="card-body">
               
-              <form > <!--[formGroup]="subjectFilterForm"-->
+              <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" > <!--[formGroup]="subjectFilterForm"-->
                 <div class="col-12 p-0">
                   <div class="ngxTableHeader">
                     <div class="table-title">
@@ -35,9 +35,11 @@
                           type="text"
                           class="form-control psl-5"
                           placeholder="Search by name"
+                          formControlName="foodName"
                           name="searchText"
                           required=""
                         />
+                        <button class="btn btn-primary auth-form-btn" >Search</button>
                       </div>
                     </div>
                     <div class="row">

@@ -84,5 +84,13 @@ public class FoodFactService implements IFoodFactService {
                 .orElseThrow(() -> new ResourceNotFoundException("FoodFact", "id", foodFactId));
         return foodFact;
     }
+
+    //search
+    @Override
+    public List<FoodFact> foodFactSearch(String foodName){
+
+        return foodFactRepository.foodFactSearch(foodName);
+
+    }
 }
 

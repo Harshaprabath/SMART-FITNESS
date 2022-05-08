@@ -20,8 +20,12 @@ export class FoodFactsComponent implements OnInit {
   showNavigationArrows = false;
   showNavigationIndicators = false;
   foodfact:FoodFact[]=[];
+  searchName = String;
+  submitted = false;
 
+  foodFactFilterForm:FormGroup;
   foodfactForm:FormGroup;
+  searchForm:FormGroup;
 
   constructor(
     private foodFactService:FoodFactService,
@@ -34,6 +38,11 @@ export class FoodFactsComponent implements OnInit {
   ngOnInit(): void {
 
     this.getAllFoodFact();
+    this.searchForm = this.fb.group({
+    
+      foodName: [null]
+     
+    });
 
   }
 
@@ -158,5 +167,37 @@ export class FoodFactsComponent implements OnInit {
         this.spinner.hide();
       });   
   }
+
+
+//search
+   onSubmit(){
+    this.submitted = true;
+    
+    console.log(this.searchForm.value);
+     if (this.searchForm.value != null){
+      console.log(this.searchForm.value.foodName);
+      
+     
+      this.foodFactService.search(this.searchForm.value.foodName)
+        .subscribe(
+          (response) => {
+            console.log(response);
+            this.foodfact= response;
+           
+          },
+          (error) => {
+            this.toastr.error("Network error has been occured. Please try again.","Error");
+            this.submitted = false;
+          }
+        );
+     }else{
+
+        this.getAllFoodFact();
+
+     }
+           
+  }
+
+  
 
 }

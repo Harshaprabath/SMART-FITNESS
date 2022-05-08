@@ -2,6 +2,7 @@ package com.smartFitness.itpm.Controllers;
 
 
 import com.smartFitness.itpm.Models.FoodFact;
+import com.smartFitness.itpm.Models.User;
 import com.smartFitness.itpm.Services.FoodFactService;
 import com.smartFitness.itpm.ViewModel.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,14 @@ public class FoodFactController {
     public FoodFact findFoodFactById(@PathVariable(value = "id") Integer foodFactId) {
 
         return foodFactService.findFoodFactById(foodFactId);
+    }
+
+    //search food fact
+    @GetMapping("/Search/{foodName}")
+    public List<FoodFact> Search (@PathVariable(value = "foodName") String foodName) {
+
+        return foodFactService.foodFactSearch(foodName);
+
     }
 
 }
