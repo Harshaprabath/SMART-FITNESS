@@ -1,6 +1,6 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -22,12 +22,15 @@ export class UsersListComponent implements OnInit {
   data = new Array<User>();
   usertype = null;
   user_t = String;
+  searchName = String;
   scrollBarHorizontal = window.innerWidth < 1200;
   loadingIndicator = false;
   reorderable = true;
+  submitted = false;
 
   userFilterForm:FormGroup;
   userForm:FormGroup;
+  searchForm:FormGroup;
 
 
   currentPage: number = 0;
@@ -44,6 +47,12 @@ export class UsersListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
+    this.searchForm = this.fb.group({
+    
+      name: [null]
+     
+    });
+    
   }
 
   //get all users
@@ -61,7 +70,7 @@ export class UsersListComponent implements OnInit {
         this.toastr.error("Network error has been occured. Please try again.","Error");
     });
   }
-  getAll2(){}
+
 
  //delete uaer
   deleteUser(row) {
@@ -219,7 +228,60 @@ export class UsersListComponent implements OnInit {
  
      return matches && matches.length > 1 ? matches[1] : null;
    }
+
+  //search
+  search(name){
+    this.loadingIndicator = true;
+    this.userService.search(name)
+    .subscribe(response=>{
+      this.data= response;
+      
+      this.spinner.hide();
+      this.loadingIndicator = false;
+
+    },error=>{
+      this.spinner.hide();
+      this.loadingIndicator = false;
+      this.toastr.error("Network error has been occured. Please try again.","Error");
+    });
+  }
+ 
+
+ 
+
+  
+
+   onSubmit(){
+    this.submitted = true;
+    
+    console.log(this.searchForm.value);
+     if (this.searchForm.value != null){
+      console.log(this.searchForm.value.name);
+      
+     
+      this.userService.search(this.searchForm.value.name)
+        .subscribe(
+          (response) => {
+            console.log(response);
+            this.data= response;
+           
+          },
+          (error) => {
+            this.toastr.error("Network error has been occured. Please try again.","Error");
+            this.submitted = false;
+          }
+        );
+     }else{
+
+        this.getAll();
+
+     }
+           
+  }
+
+ }
   
 
 
-}
+
+
