@@ -99,8 +99,8 @@ export const ROUTES: RouteInfo[] = [
         submenu: [],
       },
       {
-        path: '/user-service/our-schedules',
-        title: 'Our-schedules',
+        path: '/user-service/our-agendas',
+        title: 'Our-agendas',
         moduleName: 'user-service',
         iconType: '',
         icon: '',
