@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ResponseVM } from '../../models/common/responseVm.model';
+import { Assistance } from '../../models/serviceAndSchedule/assistance';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,9 @@ export class AssistanceService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAll(): Observable<AssistanceService[]> {
+  getAll(): Observable<Assistance[]> {
     return this.httpClient.
-      get<AssistanceService[]>(environment.apiUrl + '/assistance/all');
+      get<Assistance[]>(environment.apiUrl + '/assistance/all');
   }
 
   //Save assistance
