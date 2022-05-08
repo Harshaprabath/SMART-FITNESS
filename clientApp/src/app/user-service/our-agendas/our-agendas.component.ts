@@ -155,6 +155,8 @@ export class OurAgendasComponent implements OnInit {
           id:[row.id],          
           title: [row.title, [Validators.required]],
           description: [row.description, [Validators.required]],
+          time: [row.time, [Validators.required]],
+          date: [row.date, [Validators.required]],
           active:[true]
 
         });
