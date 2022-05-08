@@ -52,4 +52,14 @@ export class UserService {
       get<User>(environment.apiUrl + '/user/find/' + id +'/'+password);
   }
 
+  downloadUserListReport(): Observable<any> {
+    return this.httpClient.get<any>
+    (environment.apiUrl +'/user/export/pdf');
+  }
+
+  search(name: string): Observable<User[]> {
+    return this.httpClient.
+      get<User[]>(environment.apiUrl + '/user/Search/' + name);     
+  }
+
 }

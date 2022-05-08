@@ -15,4 +15,7 @@ public interface IUserService {
     public User login(String email, String password);
     public User ChangePassword(Integer Userid, String newPassword);
     public User findCurrentUser();
+    public List<User> listAll();
+    public List<User> userSearch(String name);
+
 }
