@@ -17,12 +17,12 @@ export class SchedulesComponent implements OnInit {
   data = new Array<WeightSchedule>();
   showNavigationArrows = false;
   showNavigationIndicators = false;
-  weightSchedule:WeightSchedule[] = [];
+  weightSchedule:WeightSchedule[]= [];
 
-  weightScheduleForm: FormGroup;
+  weightScheduleForm:FormGroup;
 
   constructor(
-    private weightScheduleService: WeightScheduleService,
+    private weightScheduleService:WeightScheduleService,
     config: NgbCarouselConfig,
     private spinner: NgxSpinnerService,
     private fb: FormBuilder,
@@ -34,7 +34,7 @@ export class SchedulesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllWeightSchedules();
+    this.getAllWeightSchedules()
   }
 
   getAllWeightSchedules()

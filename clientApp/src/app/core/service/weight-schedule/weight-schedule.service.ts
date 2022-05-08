@@ -30,7 +30,7 @@ export class WeightScheduleService {
 
   getWeightScheduleById(id: number): Observable<WeightSchedule> {
     return this.httpClient.
-      get<WeightSchedule>(environment.apiUrl + 'weight/schedule/find/' + id);
+      get<WeightSchedule>(environment.apiUrl + '/weight/schedule/find/' + id);
   }
 }
 

@@ -24,7 +24,7 @@ public class WeightSchedule {
     private String description;
 
     @Column(name = "serviceCharge", nullable = false)
-    private double serviceCharge;
+    private int serviceCharge;
 
     @Column(name = "isActive", nullable = false)
     private Boolean isActive;
@@ -73,7 +73,7 @@ public class WeightSchedule {
         return serviceCharge;
     }
 
-    public void setServiceCharge(double serviceCharge) {
+    public void setServiceCharge(int serviceCharge) {
         this.serviceCharge = serviceCharge;
     }
 
