@@ -34,7 +34,7 @@ export class SchedulesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //--------------------------to implement
+    this.getAllWeightSchedules();
   }
 
   getAllWeightSchedules()

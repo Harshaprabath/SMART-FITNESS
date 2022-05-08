@@ -7,7 +7,7 @@
         <a roSuterLink="/dashboard/main">
           <i class="fas fa-home font-17"></i></a>
       </li>   
-      <li class="breadcrumb-item">Excercise Plans</li>
+      <li class="breadcrumb-item">Schedules</li>
     </ul>
     <div class="section-body">
       <div class="row">
@@ -19,7 +19,7 @@
                 <div class="col-12 p-0">
                   <div class="ngxTableHeader">
                     <div class="table-title">
-                      <h1><strong>Excercise Plans</strong></h1>
+                      <h1><strong>Schedules</strong></h1>
                     </div>
                   </div>
                 </div>
@@ -54,7 +54,7 @@
                           <div class="icon-button-demo buttons" style="padding-top: 10%;">
                             <button 
                               class="btn btn-icon icon-left btn-primary rounded-button"
-                              (click)='newWeightPlanForm(addEditRecord)'>
+                              (click)='newWeightScheduleForm(addEditRecord)'>
                               <i class="material-icons">add</i>
                             </button>
                           </div>
@@ -71,17 +71,18 @@
               <div class="section-body">
                 <div class="row">
           
-                  <div class="col-12 col-md-6 col-lg-6" *ngFor="let item of weight" >
+                  <div class="col-12 col-md-6 col-lg-6" *ngFor="let item of weightSchedule" >
                     
                     <div class="card">
-                        <div >
+                        <div>
                       <div class="card-header" style="background-color: rgb(209, 94, 0);">
                         <h2 style="color: rgb(255, 255, 255);" ><u>{{item.title}}</u></h2>
                       </div>
                       <div class="card-body" style="background-color: rgb(218, 238, 238);">     
-                        
+                        <h5 style="color: black;">{{item.gymName}}</h5><br>
                         <h5 style="color: black;">{{item.description}}</h5><br>
-                        <h3 style="font-weight: bold; color: black;">Rs. {{item.price}}</h3> 
+                        <h3 style="font-weight: bold; color: black;">Location {{item.location}}</h3> 
+                        <h3 style="font-weight: bold; color: black;">Rs. {{item.serviceCharge}}</h3> 
                       </div>
                       <div class="card-footer text-end" style="background-color: rgb(218, 238, 238);">
                         <div class="buttons">
@@ -89,13 +90,13 @@
                              <!--Plan Edit Button -->
                             <button 
                               class="btn btn-icon btn-sm btn-primary" 
-                              (click)='updateWeightPlan(item, rowIndex, addEditRecord)'>
+                              (click)='updateWeightSchedule(item, rowIndex, addEditRecord)'>
                               <i class="far fa-edit"></i>
                             </button>
                              <!--Plan Delete Button -->
                             <button 
                               class="btn btn-icon btn-sm btn-danger" 
-                              (click)='deleteWeightPlan(item)'>
+                              (click)='deleteWeightSchedule(item)'>
                               <i class="far fa-trash-alt"></i>
                             </button>
                           </span>
@@ -117,10 +118,10 @@
                       <div class="table-modal-header">
                         <div class="modal-about">
                              <div class="fw-bold p-t-10 font-17" *ngIf="id==0">
-                              Add New Excercise plan
+                              Add New Schedule
                              </div>
                              <div class="fw-bold p-t-10 font-17" *ngIf="id!=0">
-                               Update Plan
+                               Update Schedule
                              </div>
                         </div>
                       </div>
@@ -140,7 +141,7 @@
                   <div class="modal-body">
                     <form 
                       class="register-form" 
-                      [formGroup]="weightForm">
+                      [formGroup]="weightScheduleForm">
                       
                       <!-- First Row -->
                       <div class="row">
@@ -148,7 +149,7 @@
                           <label>Title<span class="text-danger">*</span></label>
                           <input type="text" class="form-control " formControlName="title" placeholder="Title"
                           required>
-                          <small class="form-text text-danger" *ngIf="!weightForm.get('title').valid && weightForm.get('title').touched "> 
+                          <small class="form-text text-danger" *ngIf="!weightScheduleForm.get('title').valid && weightScheduleForm.get('title').touched "> 
                             Title is required
                           </small>
                         </div>
@@ -157,44 +158,50 @@
                       <!--Second row-->
                       <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                          <label>Gym name <span class="text-danger">*</span></label>
+                          <input type="text" class="form-control " formControlName="gymName" placeholder="gym name"
+                          required>
+                           <small class="form-text text-danger" *ngIf="!weightScheduleForm.get('gymName').valid && weightScheduleForm.get('gymName').touched "> 
+                            Gym name is required
+                        </small>
+                        </div>
+                      </div>
+
+                      <!--third row-->
+                      <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                          <label>Location <span class="text-danger">*</span></label>
+                          <input type="text" class="form-control " formControlName="location" placeholder="location"
+                          required>
+                           <small class="form-text text-danger" *ngIf="!weightScheduleForm.get('location').valid && weightScheduleForm.get('location').touched "> 
+                            Gym location is required
+                        </small>
+                        </div>
+                      </div>
+
+                      <!--Forth row-->
+                      <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
                           <label>Description <span class="text-danger">*</span></label>
                           <input type="text" class="form-control " formControlName="description" placeholder="Description"
                           required>
-                           <small class="form-text text-danger" *ngIf="!weightForm.get('description').valid && weightForm.get('description').touched "> 
+                           <small class="form-text text-danger" *ngIf="!weightScheduleForm.get('description').valid && weightScheduleForm.get('description').touched "> 
                             Description is required
                         </small>
                         </div>
                       </div>
-                        
-                      <!--Third row-->
+                      
+                      <!--Fifth row-->
                       <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-                          <div class="form-group">
-                            <label>Excercise Plan Type<span class="text-danger">*</span></label>
-                            <select class="form-select form-control" formControlName="planType" placeholder="Select">
-                              <option  [ngValue]="1">Hammer curls plan</option>
-                              <option  [ngValue]="2">Push-up plan</option>
-                              <option  [ngValue]="3">Seated bicep curls plan</option>
-                            </select>
-                          <small class="form-text text-danger" *ngIf="!weightForm.get('planType').valid && weightForm.get('planType').touched "> 
-                            Plan Type is required
-                         </small>
-                          </div>
+                          <label>Service charge <span class="text-danger">*</span></label>
+                          <input type="text" class="form-control " formControlName="serviceCharge" placeholder="service charge"
+                          required>
+                           <small class="form-text text-danger" *ngIf="!weightScheduleForm.get('serviceCharge').valid && weightScheduleForm.get('serviceCharge').touched "> 
+                            Service charge is required
+                        </small>
                         </div>
-                        </div>
-
-                        <!--forth row-->
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-                              <label>Price <span class="text-danger">*</span></label>
-                              <input type="text" class="form-control " formControlName="price" placeholder="Price"
-                              required>
-                               <small class="form-text text-danger" *ngIf="!weightForm.get('description').valid && weightForm.get('description').touched "> 
-                                Description is required
-                            </small>
-                            </div>
-                          </div>
-                       
+                      </div>
 
                         <!-- Modal Footer -->
                       <div class="modal-footer">
@@ -202,8 +209,8 @@
                         <button 
                           type="button" 
                           class="btn btn-primary" 
-                          (click)="saveWeightPlan()" 
-                          [disabled]="!weightForm.valid">
+                          (click)="saveWeightSchedule()" 
+                          [disabled]="!weightScheduleForm.valid">
                           Save
                         </button>
                         <!-- Modal Close Button -->
