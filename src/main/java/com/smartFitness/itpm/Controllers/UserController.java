@@ -7,6 +7,9 @@ import com.smartFitness.itpm.ViewModel.Response;
 import com.smartFitness.itpm.Models.User;
 import com.smartFitness.itpm.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -79,6 +82,7 @@ public class UserController {
 
     }
 
+    //generate report
     @GetMapping("/export/pdf")
     public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
         response.setContentType("application/pdf");
@@ -96,5 +100,12 @@ public class UserController {
 
     }
 
+   // search
+    @GetMapping("/Search/{name}")
+    public List<User> Search (@PathVariable(value = "name") String name) {
+
+        return userService.userSearch(name);
+
+    }
 
 }
