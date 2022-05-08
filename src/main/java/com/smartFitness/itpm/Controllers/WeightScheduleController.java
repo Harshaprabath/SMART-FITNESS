@@ -17,6 +17,7 @@ public class WeightScheduleController {
     @Autowired
     private WeightScheduleService weightScheduleService;
 
+    @CrossOrigin
     @GetMapping("/all")
     public List<WeightSchedule> findAllWeightSchedules() {
 
@@ -24,6 +25,7 @@ public class WeightScheduleController {
 
     }
 
+    @CrossOrigin
     @PostMapping("/save")
     public Response saveWeightSchedule(@Valid @RequestBody WeightSchedule weightSchedule) {
 
@@ -31,6 +33,7 @@ public class WeightScheduleController {
 
     }
 
+    @CrossOrigin
     @DeleteMapping("/delete/{id}")
     public Response deleteWeightSchedule(@PathVariable(value = "id") Integer weightScheduleId) {
 
@@ -38,6 +41,7 @@ public class WeightScheduleController {
 
     }
 
+    @CrossOrigin
     @GetMapping("/find/{id}")
     public WeightSchedule findById(@PathVariable(value = "id") Integer weightScheduleId) {
 

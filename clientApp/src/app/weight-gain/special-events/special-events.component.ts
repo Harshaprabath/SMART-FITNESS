@@ -35,7 +35,7 @@ export class SpecialEventsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //to code ----------------------------------
+    this.getAllWeightEvents();
   }
 
   getAllWeightEvents()

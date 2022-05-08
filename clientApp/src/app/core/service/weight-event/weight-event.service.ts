@@ -20,17 +20,17 @@ export class WeightEventService {
   saveWeightEvent(vm:WeightEvent): Observable<ResponseVM> {
     return this.httpClient.
       post<ResponseVM>
-      (environment.apiUrl + 'weight/event/save',vm);
+      (environment.apiUrl + '/weight/event/save',vm);
   }
 
   deleteWeightEvent(id: number): Observable<ResponseVM> {
     return this.httpClient.
-      delete<ResponseVM>(environment.apiUrl + 'weight/event/delete/' + id);
+      delete<ResponseVM>(environment.apiUrl + '/weight/event/delete/' + id);
   }
 
   getWeightEventById(id: number): Observable<WeightEvent> {
     return this.httpClient.
-      get<WeightEvent>(environment.apiUrl + 'weight/event/find/' + id);
+      get<WeightEvent>(environment.apiUrl + '/weight/event/find/' + id);
   }
 
 }
