@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-import { Assistance } from 'src/app/core/models/serviceAndSchedule/assistance';
-import { AssistanceService} from 'src/app/core/service/assistance/assistance.service';
+import { Agenda } from 'src/app/core/models/serviceAndSchedule/agenda';
+import { AgendaService} from 'src/app/core/service/agenda/agenda.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
@@ -10,21 +10,21 @@ import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
-  selector: 'app-our-services',
-  templateUrl: './our-services.component.html',
-  styleUrls: ['./our-services.component.sass'],
+  selector: 'app-our-agendas',
+  templateUrl: './our-agendas.component.html',
+  styleUrls: ['./our-agendas.component.sass'],
   providers: [ToastrService]
 })
-export class OurServicesComponent implements OnInit {
-  data = new Array<Assistance>();
+export class OurAgendasComponent implements OnInit {
+  data = new Array<Agenda>();
   showNavigationArrows = false;
   showNavigationIndicators = false;
-  assistance:Assistance[]=[];
+  agenda:Agenda[]=[];
 
-  assistanceForm: FormGroup;
+  agendaForm: FormGroup;
 
   constructor(
-    private assistanceService:AssistanceService,
+    private agendaService:AgendaService,
     config: NgbCarouselConfig,
     private spinner:NgxSpinnerService,
     private fb: FormBuilder,
@@ -36,18 +36,18 @@ export class OurServicesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllassistance()
+    this.getAllagenda()
   }
 
   
-  getAllassistance() 
+  getAllagenda() 
   {
 
-    this.assistanceService.getAll()
+    this.agendaService.getAll()
     .subscribe(response=>
      {
        console.log(response)
-       this.assistance = response;  
+       this.agenda = response;  
      },error=>{
      
      });
@@ -57,14 +57,15 @@ export class OurServicesComponent implements OnInit {
 
 
      //save assistance form
-  addNewAssistance(content)
+  addNewAgenda(content)
   {
 
-   this.assistanceForm = this.fb.group({
+   this.agendaForm = this.fb.group({
      id:[0],
-     assistanceImage: [null],
      title: ['', [Validators.required]],
      description: ['', [Validators.required]],
+     time: ['', [Validators.required]],
+     date: ['', [Validators.required]],
      active:[true]
    });
 
@@ -76,15 +77,15 @@ export class OurServicesComponent implements OnInit {
  }
 
   //save user 
-  saveAssistance()
+  saveAgenda()
   {   
-    this.assistanceService.saveAssistance(this.assistanceForm.value)
+    this.agendaService.saveAgenda(this.agendaForm.value)
     .subscribe(response=>{
         
        
           this.modalService.dismissAll();
           this.toastr.success(response.message,"Success");
-          this.getAllassistance();
+          this.getAllagenda();
           
         
 
@@ -94,8 +95,8 @@ export class OurServicesComponent implements OnInit {
 
   }
 
-  //delete uaer
-  deleteAssistance(row) {
+  //delete agenda
+  deleteAgenda(row) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
@@ -116,12 +117,12 @@ export class OurServicesComponent implements OnInit {
 
       if (result.value) {
 
-        this.assistanceService.delete(row.id).subscribe(response=>{
+        this.agendaService.delete(row.id).subscribe(response=>{
 
           if(response.isSuccess)
           {
             this.toastr.success(response.message,"Success");
-            this.getAllassistance();
+            this.getAllagenda();
           }
           else
           {
@@ -137,23 +138,25 @@ export class OurServicesComponent implements OnInit {
 
   get id()
   {
-    return this.assistanceForm.get("id").value;
+    return this.agendaForm.get("id").value;
   }
 
   //update user (Reactive Form)
-  updateAssistance(row:Assistance, rowIndex:number, content:any) 
+  updateAgenda(row:Agenda, rowIndex:number, content:any) 
   {
 
     this.spinner.show();
-      this.assistanceService.getAssistanceById(row.id)
+      this.agendaService.getAssistanceById(row.id)
       .subscribe(response=>{
         this.spinner.hide();
 
 
-        this.assistanceForm = this.fb.group({
+        this.agendaForm = this.fb.group({
           id:[row.id],          
           title: [row.title, [Validators.required]],
           description: [row.description, [Validators.required]],
+          time: [row.time, [Validators.required]],
+          date: [row.date, [Validators.required]],
           active:[true]
 
         });
@@ -166,4 +169,6 @@ export class OurServicesComponent implements OnInit {
         this.spinner.hide();
       });
   } 
+
+  
 }

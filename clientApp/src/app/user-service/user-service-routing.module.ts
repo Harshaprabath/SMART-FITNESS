@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { OurServicesComponent } from './our-services/our-services.component';
 import { BmiCalculatorComponent } from './bmi-calculator/bmi-calculator.component';
-import { OurSchedulesComponent } from './our-schedules/our-schedules.component';
+import { OurAgendasComponent } from './our-agendas/our-agendas.component';
 
 const routes: Routes = [
   {
@@ -20,8 +20,8 @@ const routes: Routes = [
     component: BmiCalculatorComponent,
   },
   {
-    path: 'our-schedules',
-    component: OurSchedulesComponent,
+    path: 'our-agendas',
+    component: OurAgendasComponent,
   },
 ];
 
