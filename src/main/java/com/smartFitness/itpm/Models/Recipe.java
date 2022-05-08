@@ -15,8 +15,8 @@ public class Recipe {
     @Column(name ="description",nullable = false)
     private String description;
 
-    @Column(name ="recipeType",nullable = false)
-    private int recipeType;
+    @Column(name ="subject",nullable = false)
+    private String subject;
 
     @Column(name ="isActive")
     private boolean isActive;
@@ -30,8 +30,8 @@ public class Recipe {
         return description;
     }
 
-    public int getRecipeType() {
-        return recipeType;
+    public String getSubject() {
+        return subject;
     }
 
     public boolean isActive() {
@@ -46,8 +46,8 @@ public class Recipe {
         this.description = description;
     }
 
-    public void setRecipeType(int recipeType) {
-        this.recipeType = recipeType;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     public void setActive(boolean active) {

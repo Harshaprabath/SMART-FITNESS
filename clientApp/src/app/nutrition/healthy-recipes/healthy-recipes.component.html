@@ -1,4 +1,200 @@
 
 <section class="main-content">
-    <p>healthy-recipes works!</p>
-</section>
+    <ul class="breadcrumb breadcrumb-style ">
+      <li class="breadcrumb-item">
+        <h5 class="page-title m-b-0">Nutritionist</h5>
+      </li>
+
+      <li class="breadcrumb-item bcrumb-1">
+        <a routerLink="/dashboard/main">
+          <i class="fas fa-home font-17"></i></a>
+      </li>   
+      <li class="breadcrumb-item">Healthy Recipes</li>
+    </ul>
+
+    <div class="section-body">
+      <div class="row">
+        <div class="col-12 col-md-12 col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              
+              <form >
+                <div class="col-12 p-0">
+                  <div class="ngxTableHeader">
+                    <div class="table-title">
+                      <h2><strong>Healthy Recipes</strong></h2>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-12 p-0">
+                  <div class="row">
+                    <div class="col-4">
+                      <div class="form-group position-relative">
+                        <label>Search</label>
+                        <i class="fas fa-search input-icons"></i>
+                        <input
+                          type="text"
+                          class="form-control psl-5"
+                          placeholder="Search by name"
+                          name="searchText"
+                          required=""/>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <label for="date"></label>
+  
+                          <button
+                            class="btn btn-primary"
+                            style="margin-top: 30px"
+                            type="button" >
+                            Generate Report
+                          </button>
+                          <br>
+                          <div class="icon-button-demo buttons" style="padding-top: 10%;">
+                            <button 
+                              class="btn btn-icon icon-left btn-primary rounded-button"
+                              (click)='addNewRecipe(addEditRecord)'>
+                              <i class="material-icons">add</i>
+                            </button>
+                          </div>
+  
+                        </div>
+                      </div>
+                    </div>
+                      
+                  </div>
+                </div>
+              </form>
+  
+  
+              <div class="section-body">
+                <div class="row">
+          
+                  <div class="col-12 col-md-6 col-lg-6" *ngFor="let item of recipe" >
+                    
+                    <div class="card">
+                        <div >
+                        
+                        <div class="card-body" style="background-color: rgb(218, 238, 238);">     
+                            
+                            <h3><u>{{item.subject}}</u></h3><br>
+                            <h5>{{item.description}}</h5> 
+                        </div>  
+                      <div class="card-footer text-end" style="background-color: rgb(218, 238, 238);">
+                        <div class="buttons">
+                          <span>
+                             <!--Recipe Edit Button -->
+                            <button 
+                              class="btn btn-icon btn-sm btn-primary" 
+                              (click)='updateRecipe(item, rowIndex, addEditRecord)'>
+                              <i class="far fa-edit"></i>
+                            </button>
+                             <!--Recipe Delete Button -->
+                            <button 
+                              class="btn btn-icon btn-sm btn-danger" 
+                              (click)='deleteRecipe(item)'>
+                              <i class="far fa-trash-alt"></i>
+                            </button>
+                          </span>
+                        </div>  
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+          
+                   
+                </div>
+                
+            </div>
+  
+                <!-- Add new recipe Modal Window -->
+                <ng-template #addEditRecord let-modal>
+                  <div class="modal-header editRowModal">
+                    <h4 class="modal-title" id="modal-basic-title">
+                      <div class="table-modal-header">
+                        <div class="modal-about">
+                             <div class="fw-bold p-t-10 font-17" *ngIf="id==0">
+                              Add New Recipe
+                             </div>
+                             <div class="fw-bold p-t-10 font-17" *ngIf="id!=0">
+                               Update Recipe
+                              </div>
+                        </div>
+                      </div>
+                    </h4>
+                    <!-- Modal Close Button -->
+                    <button 
+                      type="button" 
+                      class="close" 
+                      aria-label="Close" 
+                      (click)="modal.dismiss()">
+                      <span aria-hidden="true">
+                        <i class="material-icons">close</i>
+                      </span>
+                    </button>
+                  </div>
+    
+                  <div class="modal-body">
+                    <form 
+                      class="register-form" 
+                      [formGroup]="recipeForm">
+                      
+                      <!-- First Form Row -->
+                      <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                          <label>Subject<span class="text-danger">*</span></label>
+                          <input type="text" class="form-control " formControlName="subject" placeholder="Subject"
+                          required>
+                          <small class="form-text text-danger" *ngIf="!recipeForm.get('subject').valid && recipeForm.get('subject').touched "> 
+                            Subject is required
+                          </small>
+                        </div>
+    
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                          <label>Description <span class="text-danger">*</span></label>
+                          <input type="text" class="form-control " formControlName="description" placeholder="Description"
+                          required>
+                           <small class="form-text text-danger" *ngIf="!recipeForm.get('description').valid && recipeForm.get('description').touched "> 
+                            Description is required
+                          </small> 
+                        </div>
+                             
+                       
+                      </div>
+                        <!-- Modal Footer -->
+                      <div class="modal-footer">
+                        <!-- Save recipe Button -->
+                        <button 
+                          type="button" 
+                          class="btn btn-primary" 
+                          (click)="saverecipe()" 
+                          [disabled]="!recipeForm.valid">
+                          Save Recipe
+                        </button>
+                        <!-- Modal Close Button -->
+                        <button 
+                          type="button" 
+                          class="btn btn-light" 
+                          (click)="modal.close('Close click')">
+                          Close
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </ng-template>
+  
+  
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  
+  </section>
+  

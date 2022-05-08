@@ -4,11 +4,13 @@
     <li class="breadcrumb-item">
       <h5 class="page-title m-b-0">Nutritionist</h5>
     </li>
+
     <li class="breadcrumb-item bcrumb-1">
       <a routerLink="/dashboard/main">
         <i class="fas fa-home font-17"></i></a>
-    </li>   
-    <li class="breadcrumb-item">Diat Plans</li>
+    </li>  
+
+    <li class="breadcrumb-item">Diet Plans</li>
   </ul>
   <div class="section-body">
     <div class="row">
@@ -16,11 +18,11 @@
         <div class="card">
           <div class="card-body">
             
-            <form > <!--[formGroup]="subjectFilterForm"-->
+            <form > 
               <div class="col-12 p-0">
                 <div class="ngxTableHeader">
                   <div class="table-title">
-                    <h2><strong>Diat Plans</strong></h2>
+                    <h2><strong>Diet Plans</strong></h2>
                   </div>
                 </div>
               </div>
@@ -36,10 +38,10 @@
                         class="form-control psl-5"
                         placeholder="Search by name"
                         name="searchText"
-                        required=""
-                      />
+                        required=""/>                        
                     </div>
                   </div>
+
                   <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                       <div class="form-group">
@@ -48,10 +50,13 @@
                         <button
                           class="btn btn-primary"
                           style="margin-top: 30px"
-                          type="button" >
+                          type="button"
+                          (click)="generateReport()" >
                           Generate Report
                         </button>
+                        
                         <br>
+
                         <div class="icon-button-demo buttons" style="padding-top: 10%;">
                           <button 
                             class="btn btn-icon icon-left btn-primary rounded-button"
@@ -89,13 +94,13 @@
                     <div class="card-footer text-end" style="background-color: rgb(218, 238, 238);">
                       <div class="buttons">
                         <span>
-                           <!--Plan Edit Button -->
+                           <!--diet Plan Edit Button -->
                           <button 
                             class="btn btn-icon btn-sm btn-primary" 
                             (click)='updatePlan(item, rowIndex, addEditRecord)'>
                             <i class="far fa-edit"></i>
                           </button>
-                           <!--Plan Delete Button -->
+                           <!--diet Plan Delete Button -->
                           <button 
                             class="btn btn-icon btn-sm btn-danger" 
                             (click)='deletePlan(item)'>
@@ -113,21 +118,22 @@
               
           </div>
 
-              <!-- Add new Subject Modal Window -->
+              <!-- Add new diet plan Modal Window -->
               <ng-template #addEditRecord let-modal>
                 <div class="modal-header editRowModal">
                   <h4 class="modal-title" id="modal-basic-title">
                     <div class="table-modal-header">
                       <div class="modal-about">
                            <div class="fw-bold p-t-10 font-17" *ngIf="id==0">
-                            Add New User
+                            Add New Plan
                            </div>
                            <div class="fw-bold p-t-10 font-17" *ngIf="id!=0">
-                             Update User
+                             Update Plan
                             </div>
                       </div>
                     </div>
                   </h4>
+                  
                   <!-- Modal Close Button -->
                   <button 
                     type="button" 
@@ -179,12 +185,13 @@
                        </small>
                         </div>
                       </div> 
-  
-                     
+                       
                     </div>
+
                       <!-- Modal Footer -->
                     <div class="modal-footer">
-                      <!-- Save Subject Button -->
+
+                      <!-- Save diet plan Button -->
                       <button 
                         type="button" 
                         class="btn btn-primary" 
@@ -192,6 +199,7 @@
                         [disabled]="!planForm.valid">
                         Save Plan
                       </button>
+
                       <!-- Modal Close Button -->
                       <button 
                         type="button" 
@@ -203,8 +211,6 @@
                   </form>
                 </div>
               </ng-template>
-
-
            
           </div>
         </div>
