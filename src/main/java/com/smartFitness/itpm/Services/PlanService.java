@@ -89,7 +89,7 @@ public class PlanService implements IPlanService {
 
     public List<Plan> listAllPlans() {
 
-        List<Plan> plan = (List<Plan>) planRepository.findAll();
+        List<Plan> plan = (List<Plan>) this.findAllPlans();
         plan.sort((o1, o2)
                 -> o1.getDuration().compareTo(
                 o2.getDuration()));

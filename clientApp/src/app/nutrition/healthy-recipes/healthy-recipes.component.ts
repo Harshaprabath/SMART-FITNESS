@@ -135,7 +135,7 @@ export class HealthyRecipesComponent implements OnInit {
     return this.recipeForm.get("id").value;
   }
 
-  //update user (Reactive Form)
+  //update recipe (Reactive Form)
   updateRecipe(row:Recipe, rowIndex:number, content:any) 
   {
 

@@ -62,7 +62,7 @@ public class PlanController {
         String currentDateTime = dateFormatter.format(new Date());
 
         String headerKey = "Content-Disposition";
-        String headerValue = "attachment; filename=users_" + currentDateTime + ".pdf";
+        String headerValue = "attachment; filename=DietPlans_" + currentDateTime + ".pdf";
         response.setHeader(headerKey, headerValue);
 
         List<Plan> listAllPlans = planService.listAllPlans();

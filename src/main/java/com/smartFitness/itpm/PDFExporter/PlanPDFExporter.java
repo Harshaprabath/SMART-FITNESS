@@ -5,6 +5,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import com.smartFitness.itpm.Enums.EnPlanType;
 import com.smartFitness.itpm.Models.Plan;
 
 import javax.servlet.http.HttpServletResponse;
@@ -41,12 +42,12 @@ public class PlanPDFExporter {
 
     private void writeTableData(PdfPTable table) {
         for (Plan plan : listAllPlans) {
-            table.addCell(String.valueOf(plan.getPlanType()));
+           // table.addCell(String.valueOf(plan.getPlanType()));
+
+            EnPlanType enPlanType = new EnPlanType();
+            table.addCell(enPlanType.enPlanType(plan.getPlanType()));
 
             table.addCell(plan.getDuration());
-
-            //EnPlanType enUserType = new EnPlanType();
-            //table.addCell(enUserType.enUserType(plan.getUserType()));
 
             Date date = new Date();
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");

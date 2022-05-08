@@ -34,4 +34,9 @@ export class PlanService {
     return this.httpClient.
       get<Plan>(environment.apiUrl + '/plan/find/' + id);
   }
+
+  downloadPlanListReport(): Observable<any> {
+    return this.httpClient.get<any>
+    (environment.apiUrl +'/plan/export/pdf');
+  }
 }
