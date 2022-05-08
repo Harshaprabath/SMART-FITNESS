@@ -34,6 +34,7 @@ import {
   HttpClient,
 } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RoutingModule } from 'angular-routing';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -73,6 +74,7 @@ export function createTranslateLoader(http: HttpClient): any {
     CoreModule,
     SharedModule,
     NgbModule,
+    RoutingModule.forRoot(),
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },

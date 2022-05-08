@@ -86,4 +86,13 @@ public class PlanService implements IPlanService {
                 .orElseThrow(() -> new ResourceNotFoundException("Plan", "id", planId));
         return plan;
     }
+
+    public List<Plan> listAllPlans() {
+
+        List<Plan> plan = (List<Plan>) this.findAllPlans();
+        plan.sort((o1, o2)
+                -> o1.getDuration().compareTo(
+                o2.getDuration()));
+        return plan;
+    }
 }

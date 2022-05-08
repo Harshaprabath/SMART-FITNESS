@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpResponse } from '@angular/common/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Plan } from 'src/app/core/models/nutrition/plan';
@@ -7,6 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { DatatableComponent } from '@swimlane/ngx-datatable';
 
 
 @Component({
@@ -16,12 +18,25 @@ import { NgxSpinnerService } from 'ngx-spinner';
   providers: [ToastrService]
 })
 export class DietPlanComponent implements OnInit {
+
+  @ViewChild(DatatableComponent, { static: false }) table: DatatableComponent;
   data = new Array<Plan>();
+  plantype = null
+  plan_t = String;
   showNavigationArrows = false;
   showNavigationIndicators = false;
+  scrollBarHorizontal = window.innerWidth < 1200;
+  loadingIndicator = false;
+  reorderable = true;
+
   plan:Plan[]=[];
 
+  planFilterForm:FormGroup;
   planForm:FormGroup;
+
+  currentPage: number = 0;
+  pageSize: number = 10;
+  totalRecord: number = 0;
 
   constructor(
     private planService:PlanService,
@@ -40,6 +55,7 @@ export class DietPlanComponent implements OnInit {
   }
 
    
+   //get all diet plans
    getAllplan()
    {
      this.planService.getAll()
@@ -52,7 +68,7 @@ export class DietPlanComponent implements OnInit {
        });
    }
 
-     //save plan form
+     //save diet plan form
   addNewPlan(content)
   {
 
@@ -71,7 +87,7 @@ export class DietPlanComponent implements OnInit {
 
  }
 
-  //save user 
+  //save diet plan
   savePlan()
   {   
     this.planService.savePlan(this.planForm.value)
@@ -90,7 +106,7 @@ export class DietPlanComponent implements OnInit {
 
   }
 
-  //delete uaer
+  //delete diet plan
   deletePlan(row) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -136,7 +152,7 @@ export class DietPlanComponent implements OnInit {
     return this.planForm.get("id").value;
   }
 
-  //update user (Reactive Form)
+  //update diet plan (Reactive Form)
   updatePlan(row:Plan, rowIndex:number, content:any) 
   {
 
@@ -163,4 +179,27 @@ export class DietPlanComponent implements OnInit {
         this.spinner.hide();
       });
   } 
+
+
+  //diet plan report generate
+  
+  generateReport()
+  {
+    this.spinner.show();
+
+    this.planService.downloadPlanListReport().subscribe((response:HttpResponse<Blob>)=>{
+     
+    },error=>{
+        this.spinner.hide();
+        
+    });
+  }
+
+
+  parseFilenameFromContentDisposition(contentDisposition) {
+    if (!contentDisposition) return null;
+    let matches = /filename="(.*?)"/g.exec(contentDisposition);
+
+    return matches && matches.length > 1 ? matches[1] : null;
+  }
 }
