@@ -1,10 +1,10 @@
 package com.smartFitness.itpm.Models;
 
-/*import javax.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "weight_event")
-public class weightEvent {
+public class WeightEvent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,6 +21,9 @@ public class weightEvent {
 
     @Column(name = "entrants", nullable = false)
     private Integer entrants;
+
+    @Column(name = "isActive", nullable = false)
+    private boolean isActive;
 
     public Integer getId() {
         return id;
@@ -61,4 +64,12 @@ public class weightEvent {
     public void setEntrants(Integer entrants) {
         this.entrants = entrants;
     }
-}*/
+
+    public boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+}
