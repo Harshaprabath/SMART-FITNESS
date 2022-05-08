@@ -7,6 +7,9 @@ import com.smartFitness.itpm.ViewModel.Response;
 import com.smartFitness.itpm.Models.User;
 import com.smartFitness.itpm.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +28,7 @@ public class UserService implements IUserService {
 
     private CurrentUser currentUser;
 
+    //get all
     @Override
     public List<User> findAllUsers() {
 
@@ -42,6 +46,7 @@ public class UserService implements IUserService {
         return ActiveUsers;
     }
 
+    //add and update
     @Override
     public Response saveUser(User NewUser) {
 
@@ -66,6 +71,7 @@ public class UserService implements IUserService {
         return response;
     }
 
+    //get by id
     @Override
     public User findById(Integer userId) {
 
@@ -75,6 +81,7 @@ public class UserService implements IUserService {
 
     }
 
+    //remove
     @Override
     public Response deleteUser(Integer userId) {
 
@@ -96,6 +103,7 @@ public class UserService implements IUserService {
          return response;
     }
 
+    //login
     @Override
     public User login(String email, String password) {
 
@@ -115,7 +123,7 @@ public class UserService implements IUserService {
         return null;
     }
 
-
+    //change password
     @Override
     public User ChangePassword(Integer userId , String newPassword) {
         User user = userRepository.findById(userId)
@@ -128,12 +136,13 @@ public class UserService implements IUserService {
         return user;
     }
 
+    //get logged user
     @Override
     public User findCurrentUser() {
         return currentUser.getCurrentUser();
     }
 
-
+    @Override
     public List<User> listAll() {
 
         List<User> users = (List<User>) userRepository.findAll();
@@ -141,6 +150,14 @@ public class UserService implements IUserService {
                 -> o1.getFirstName().compareTo(
                 o2.getFirstName()));
         return users;
+    }
+
+    //search
+    @Override
+    public List<User> userSearch(String name){
+
+        return userRepository.userSearch(name);
+
     }
 
 }
