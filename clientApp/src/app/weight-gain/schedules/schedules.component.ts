@@ -98,8 +98,51 @@ export class SchedulesComponent implements OnInit {
         cancelButtonText: 'No, cancel!',
         reverseButtons: true
       }).then((result) => {
-        this.weightScheduleService.deleteWeightSchedule(row.id)
-      })
+        if (result.value) {
+          this.weightScheduleService.deleteWeightSchedule(row.id).subscribe(response=>{
+            if(response.isSuccess) {
+              this.toastr.success(response.message, "Success");
+              this.getAllWeightSchedules();
+            }
+            else {
+              this.toastr.error(response.message, "Error");
+            }
+          }, error=> {
+            this.toastr.error("Network error has been occured. Please try again.","Error");
+          });
+        }
+      });
+  }
+
+  get id()
+  {
+    return this.weightScheduleForm.get("id").value;
+  }
+
+  updateWeightSchedule(row:WeightSchedule, rowIndex:number, content:any)
+  {
+    this.spinner.show();
+    this.weightScheduleService.getWeightScheduleById(row.id)
+      .subscribe(response=> {
+        this.spinner.hide();
+
+        this.weightScheduleForm = this.fb.group({
+          id: [row.id],
+          title: [row.title, [Validators.required]],
+          gymName: [row.gymName, [Validators.required]],
+          location: [row.location, [Validators.required]],
+          description: [row.description, [Validators.required]],
+          serviceCharge: [row.serviceCharge, [Validators.required]],
+          isActive: [true]
+        });
+
+        this.modalService.open(content, {
+          ariaLabelledBy: 'modal-basic-title',
+          size: 'lg',
+        });
+      }, error=> {
+        this.spinner.hide();
+      });
   }
 
 }
